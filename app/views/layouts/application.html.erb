@@ -10,6 +10,20 @@
   </head>
 
   <body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">ブランド</a>
+  <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="Navber">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+     <li><a class="nav-item nav-link active" href="#">Menu#1</a></li>
+      <li><a class="nav-item nav-link" href="#">Menu#2</a></li>
+      <li><a class="nav-item nav-link disabled" href="#">Menu#3</a></li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+
     <%= yield %>
   </body>
 </html>
