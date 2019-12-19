@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'a_about' => "home#about"
-
-  resources :costomers, only: [:show, :edit, :update]
-  get "cancel" => 'costomers/cancel'
+  get "cancel" => 'customers/cancel'
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -11,11 +9,11 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
   devise_for :customers, controllers: {
-    sessions:      'users/sessions',
-    passwords:     'users/passwords',
-    registrations: 'users/registrations'
+    sessions:      'customers/sessions',
+    passwords:     'customers/passwords',
+    registrations: 'customers/registrations'
   }
-
+  resources :customers, only: [:show, :edit, :update]
   resources :items
   get "cancel" => "items/cancel"
 
