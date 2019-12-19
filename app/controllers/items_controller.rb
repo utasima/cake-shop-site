@@ -3,5 +3,9 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params:[id])
+    @user = current_user
+    @user.Cart_item = @item.id
+    
   end
 end

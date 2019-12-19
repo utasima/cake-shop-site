@@ -1,2 +1,7 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<%= form_for @item do |f| %>
+<%= @item.name %>
+<%= @item.image_id %>
+<%= @item.price %>
+<%= @item.description %>
+<%= f.select :number, {1,2,3}, {include_blank} %>
+<%= f.submit "カートに入れる", class:"btn btn-primary" %>
