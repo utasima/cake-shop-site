@@ -1,0 +1,8 @@
+<% if customer_signed_in? %>
+	 <P>name</P>
+		<%= current_customer.last_name %>
+	 <P>email</P>
+	 	<%= current_customer.email %>
+
+	 	<%= link_to "logout", destroy_customer_session_path, method: :delete %>
+<% end %>
