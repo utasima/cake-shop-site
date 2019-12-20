@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
-  get 'a_about' => "home#about"
-  get "cancel" => 'customers/cancel'
+  get 'about' => "home#about"
 
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
