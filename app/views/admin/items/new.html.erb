@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <div class="row">
+
+
+<div class="col-2 offset-md-3">
+
+<%= form_for(@item) do |item| %>
+  
+  <p id="notice"><%= notice %></p>
+  
+  <table class="table">
+  <tr>
+  <div class="field">
+  <th><%= item.label :商品名 %></th>
+  <th><%= item.text_field :name %></th>
+  </div>
+  </tr>
+  <tr>
+  <div class="field">
+  <th><%= item.label :価額 %></th>
+  <th><%= item.text_field :price %></th>
+  </div>
+  </tr>
+  <tr>
+  <div class="field">
+    <th><%= item.label :説明文 %></th>
+    <th><%= item.text_area :description %></th>
+  </div>
+  </tr>
+  <tr>
+  <div class="actions">
+    <th><%= item.submit "上記を追加する" %></th>
+  </div>
+  </tr>
+  <tr>
+  <div class="actions">
+    <%= item.label :画像ファイル %><br>
+    <%= item.attachment_field :image %><br>
+  </div>
+  </tr>
+  </table>
+<% end %>
+
+  </div>
+
+
+ </div>
+</div>

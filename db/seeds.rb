@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Item.create!(
+  title: '冬のサンタSケーキ',
+  price: '200000000000',
+  description: 'サンタが届けるあなただけのスペシャルケーキ',
+  # image: 'テスト太郎',
+)
