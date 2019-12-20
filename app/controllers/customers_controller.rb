@@ -1,11 +1,11 @@
-class CostomersController < ApplicationController
+class CustomersController < ApplicationController
   def edit
   end
 
   def show
   end
 
-  def update
+  def updete
   end
 
   def cancel
