@@ -14,6 +14,7 @@ class Admin::ItemsController < ApplicationController
     @cart = CartItem.new
     @number = [*1..100]
   end
+    
   
   def new
     @item = Item.new
