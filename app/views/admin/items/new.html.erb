@@ -4,7 +4,7 @@
 
 <div class="col-2 offset-md-3">
 
-<%= form_for(@item) do |item| %>
+<%= form_for @item ,url: admin_items_path do |item| %>
   
   <p id="notice"><%= notice %></p>
   

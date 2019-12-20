@@ -19,12 +19,11 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
-
-  resources :items, only: [:index, :show,]
-  get "cancel" => "items/cancel"
-
   namespace :admin do
     resources :items
   end
+  
+  resources :items, only: [:index, :show]
+  get "cancel" => "items/cancel"
   resources :cart_items, only: [:index,:destroy,:create,:update]
 end
