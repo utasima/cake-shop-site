@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2019_12_18_110451) do
-=======
-ActiveRecord::Schema.define(version: 2019_12_18_105103) do
+ActiveRecord::Schema.define(version: 2019_12_19_105016) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,7 +23,14 @@ ActiveRecord::Schema.define(version: 2019_12_18_105103) do
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
->>>>>>> bdf871940aa837a3350f11ce4dac38d817edf92e
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "number"
+    t.integer "item_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "customers", force: :cascade do |t|
     t.string "last_name"
@@ -44,7 +48,17 @@ ActiveRecord::Schema.define(version: 2019_12_18_105103) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
+  create_table "items", force: :cascade do |t|
+    t.integer "genre_id"
+    t.string "name"
+    t.integer "price"
+    t.text "description"
+    t.boolean "is_deleted"
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "postage"
     t.integer "total_price"
@@ -54,15 +68,6 @@ ActiveRecord::Schema.define(version: 2019_12_18_105103) do
     t.string "order_postal_code"
     t.string "adress"
     t.integer "customer_id"
-=======
-  create_table "items", force: :cascade do |t|
-    t.integer "genre_id"
-    t.string "name"
-    t.integer "price"
-    t.text "description"
-    t.boolean "is_deleted"
-    t.string "image_id"
->>>>>>> bdf871940aa837a3350f11ce4dac38d817edf92e
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

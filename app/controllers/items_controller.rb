@@ -3,9 +3,10 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params:[id])
-    @user = current_user
-    @user.Cart_item = @item.id
-    
+    @cart = CartItem.new
+    @number = [*1..100]
+    @item = Item.find(params[:id])
   end
+  
+
 end

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'cart_items/index'
+  get 'cart_items/create'
+  get 'cart_items/destroy'
+  get 'cart_items/update'
   root 'home#index'
-  get 'a_about' => "home#about"
+  get 'about' => "home#about"
 
   resources :costomers, only: [:show, :edit, :update]
   get "cancel" => 'costomers/cancel'
@@ -21,6 +25,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :items
-
   end
+  resources :cart_items, only: [:index,:destroy,:create,:update]
 end
