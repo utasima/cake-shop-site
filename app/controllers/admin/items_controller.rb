@@ -8,12 +8,14 @@ class Admin::ItemsController < ApplicationController
   end
   
   def edit
-
   end
   
   def show
-    
+    @cart = CartItem.new
+    @number = [*1..100]
   end
+    
+  
   def new
     @item = Item.new
   end
@@ -23,8 +25,7 @@ class Admin::ItemsController < ApplicationController
     if @item.save
       redirect_to admin_item_path(@item)
     else
-      @items = Item.all
-      render action: :index
+      render action: :new
     end
   end
   
