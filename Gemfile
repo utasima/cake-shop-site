@@ -64,10 +64,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'devise'
 gem 'font-awesome-rails'
-<<<<<<< HEAD
 gem 'pry-byebug'
-=======
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
->>>>>>> a9ff5da2e7fa24e5d6419b2fca8c717564e4780c

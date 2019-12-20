@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :items, only: [:index, :show,]
+  resources :items
   get "cancel" => "items/cancel"
 
   namespace :admin do

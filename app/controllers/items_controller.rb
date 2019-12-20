@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :cancel]
-
+  before_action :set_item, only: [:show, :edit, :update, :destroy,] #:cancel
+  
   def index
     @items = Item.all
   end
@@ -8,12 +8,6 @@ class ItemsController < ApplicationController
   def show
     @cart = CartItem.new
     @number = [*1..100]
-    @item = Item.find(params[:id])
-  end
-  
-
-end
-    @item = Item.new
   end
 
   def cancel
@@ -26,7 +20,7 @@ end
       redirect_to admin_item_path(@item)
     else
       @items = Item.all
-      @item = Item.find(current_admin.id)
+      @item = Item.find(@item)
       render action: :index
     end
   end
