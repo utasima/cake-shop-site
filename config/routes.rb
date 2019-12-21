@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items
     resources :customers
-
   end
-  
+  resources :deliver_infos
+  resources :customers, only: [:show, :edit, :update]
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"
   resources :cart_items, only: [:index,:destroy,:create,:update]

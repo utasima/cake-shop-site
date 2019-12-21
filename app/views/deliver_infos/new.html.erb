@@ -1,0 +1,12 @@
+<%= "配送先新規作成" %><br />
+  <%= from_for @deliver_info do |deliver_info_form| %>
+    <%= deliver_info_form.label :name, "宛名" %>
+    <%= deliver_info_form.text_field :name %><br />
+    <%= deliver_info_form.label :postal_code, "郵便番号" %>
+    <%= deliver_info_form.text_field :postal_code %><br />
+    <%= deliver_info_form.label :address, "住所" %>
+    <%= deliver_info_form.text_field :address %><br />
+  <div class="actions">
+    <%= deliver_info_form.submit %>
+  </div>
+<% end %>

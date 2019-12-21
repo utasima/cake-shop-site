@@ -1,15 +1,15 @@
 <%= "配送先住所" %><br />
-  <%= f.fields_for :deliver_infoses do |deliver_info_form| %>
+  <%= from_for @deliver_info do |deliver_info_form| %>
     <%= deliver_info_form.label :name, "宛名" %>
     <%= deliver_info_form.text_field :name %><br />
     <%= deliver_info_form.label :postal_code, "郵便番号" %>
     <%= deliver_info_form.text_field :postal_code %><br />
     <%= deliver_info_form.label :address, "住所" %>
     <%= deliver_info_form.text_field :address %><br />
-  <% end %>
-</div>
+
+    <%= link_to 'Destroy', deliver_infos_path(@deliver_infos), method: :delete, data: { confirm: '本当によろしいですか?' } %>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= deliver_info_form.submit %>
   </div>
 <% end %>
