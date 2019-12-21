@@ -2,7 +2,8 @@ class DeliverInfosController < ApplicationController
   before_action :set_deliver_info, only: [:edit, :destroy, :update]
 
   def index
-    @deliver_info = DeliverInfo.all
+    @deliver_info = DeliverInfo.new
+    @deliver_infos = DeliverInfo.all
   end
   
   def edit

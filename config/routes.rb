@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     resources :customers
   end
   resources :deliver_infos
+  post 'deliver_infos', to: 'deliver_infos#create', as: 'create_deliver_info'
   resources :customers, only: [:show, :edit, :update]
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"

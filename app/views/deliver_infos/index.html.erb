@@ -1,20 +1,25 @@
-<div class="container pt-3"><h1>配達先一覧</h1></div> 
+<div class="container pt-3"><h1>配達先登録/一覧</h1></div> 
 
-<% @deliver_info.each do |deliver| %>
+<%= "配送先新規作成" %><br />
+  <%= form_for(@deliver_info, url: create_deliver_info_path) do |deliver_info_form| %>
+    <%= deliver_info_form.label :name, "宛名" %>
+    <%= deliver_info_form.text_field :name %><br />
+    <%= deliver_info_form.label :postal_code, "郵便番号" %>
+    <%= deliver_info_form.text_field :postal_code %><br />
+    <%= deliver_info_form.label :address, "住所" %>
+    <%= deliver_info_form.text_field :address %><br />
+    <div class="actions">
+    <%= deliver_info_form.submit '登録', class: 'btn btn-primary btn-lg my-1 mb-5 px-5' %> 
+    </div>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<% @deliver_infos.each do |deliver| %>
     <%= deliver.name %>
     <%= deliver.postal_code %>
     <%= deliver.address %>
-    <%= link_to edit_deliver_info_path(deliver) do %>
-    <div class="btn btn-outline-primary">配達先の編集</div>
-    <% end %>
-<% end %>
-
-
-
-<%= link_to edit_deliver_info_path(current_customer) do %>
-<div class="btn btn-outline-primary">配達先の編集</div>
-<% end %>
-<%= link_to new_deliver_info_path(@deliver_info) do %>
-<div class="btn btn-outline-primary">新規で配達先を追加</div>
+    <%= link_to '編集する', edit_deliver_info_path(deliver), class: 'btn btn-primary btn-lg my-1 mb-5 px-5' %>
+    <%= link_to '削除する', deliver, method: :delete, class: 'btn btn-primary btn-lg my-1 mb-5 px-5', data: { confirm: '本当によろしいですか?' } %>
 <% end %>
 
