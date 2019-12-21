@@ -7,6 +7,7 @@ class DeliverInfosController < ApplicationController
   end
   
   def edit
+    @deliver_info = DeliverInfo.new
   end
 
   def create
