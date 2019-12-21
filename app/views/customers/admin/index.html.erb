@@ -1,4 +1,4 @@
-<div class = "index-title">
+、<div class = "index-title">
 				<h2>顧客情報</h2>
 			</div>
 			<div class = "index-items">
@@ -8,6 +8,7 @@
 						<th>名前(カナ)</th>
 						<th>メールアドレス</th>
 						<th>電話番号</th>
+						<th></th>
 						<th></th>
 						<th></th>
 					</tr>
@@ -20,6 +21,7 @@
 							<td><%= customer.phone_number %></td>
 							<td><%= link_to "Show", admin_path(customer) %></td>
 							<td><%= link_to "Edit",edit_admin_path(customer) %></td>
+							<td><%= link_to "Destroy", admin_path(customer), method: :delete, "data-confirm" => "本当に消しますか？", class: "customer-destroy-btn" %></td>
 						</tr>
 					<% end %>
 				</table>
