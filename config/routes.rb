@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'about' => "home#about"
   get 'customer/edit_password' => "customers#edit_password"
   post'customer/update_password' => "customers#update_password"
+  get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
     passwords:     'customers/passwords',
     registrations: 'customers/registrations'
   }
-  resources :customers, only: [:show, :edit, :update]
+  resources :customers, only: [:show, :edit, :update,:destroy]
   resources :items
   get "cancel" => "items/cancel"
 

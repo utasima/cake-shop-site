@@ -22,6 +22,16 @@ class CustomersController < ApplicationController
   	redirect_to new_customer_session_path
   end
 
+  def new_Unsubscribe
+  	current_customer
+  end
+
+  def destroy
+  	customer = Customer.find(params[:id])
+  	customer.destroy
+  	redirect_to root_path
+  end
+
   def cancel
   end
 
