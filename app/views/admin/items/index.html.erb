@@ -1,0 +1,15 @@
+<div class="container pt-3"><h1>商品一覧</h1></div> 
+
+<% @items.each do |item| %>
+    <div class="container">
+      <%= link_to attachment_image_tag(@item, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg"), admin_item_path(item) %>
+    </div>
+    <%= item.name %>
+    <%= item.description %>
+    <%= item.price %>
+<% end %>
+
+
+<%= link_to new_admin_item_path(@item) do %>
+<div class="btn btn-outline-primary">Create CAKE</div>
+<% end %>
