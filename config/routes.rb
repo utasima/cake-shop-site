@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'about' => "home#about"
-
+  get 'customer/edit_password' => "customers#edit_password"
+  post'customer/update_password' => "customers#update_password"
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
