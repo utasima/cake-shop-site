@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :cancel]
-  
+
   def index
     @items = Item.all
   end
@@ -10,8 +10,10 @@ class ItemsController < ApplicationController
     @number = [*1..100]
   end
 
+
   def cancel
   end
+
 
   private
     def set_item
