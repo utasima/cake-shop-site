@@ -3,4 +3,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
+  has_many :deliver_infos#, dependent: :destroy
+  accepts_nested_attributes_for :deliver_infos
 end

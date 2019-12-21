@@ -1,0 +1,14 @@
+<div class="container pt-3"><h1>配達先一覧</h1></div> 
+
+<% @deliver_infos.each do |deliver| %>
+    <%= deliver.name %>
+    <%= deliver.postal_code %>
+    <%= deliver.address %>
+    <%= link_to 'Edit', edit_deliver_info_path(deliver) %>
+    <%= link_to 'Destroy', deliver_infos_path(deliver), method: :delete, data: { confirm: '本当によろしいですか?' } %>
+<% end %>
+
+<%= link_to edit_deliver_info_path(@deliver_info) do %>
+<div class="btn btn-outline-primary">新規で配達先を追加</div>
+<% end %>
+

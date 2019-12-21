@@ -1,0 +1,15 @@
+<%= "配送先住所" %><br />
+  <%= f.fields_for :deliver_infoses do |addresses_form| %>
+    <%= addresses_form.label :name, "宛名" %>
+    <%= addresses_form.text_field :name %><br />
+    <%= addresses_form.label :postal_code, "郵便番号" %>
+    <%= addresses_form.text_field :postal_code %><br />
+    <%= addresses_form.label :address, "住所" %>
+    <%= addresses_form.text_field :address %><br />
+  <% end %>
+</div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
