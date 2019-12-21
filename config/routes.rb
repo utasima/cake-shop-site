@@ -25,8 +25,8 @@ Rails.application.routes.draw do
     resources :items
   end
 
-  scope module: :customer do
-    resources :admin
+  scope module: :customers do
+    resources :admin, only: [:index,:show,:edit,:update,:destroy]
   end
 
   resources :items, only: [:index, :show]
