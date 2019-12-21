@@ -10,8 +10,10 @@ class ItemsController < ApplicationController
     @number = [*1..100]
   end
 
+
   def cancel
   end
+
 
   private
     def set_item

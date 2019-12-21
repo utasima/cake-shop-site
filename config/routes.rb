@@ -22,15 +22,19 @@ Rails.application.routes.draw do
     registrations: 'customers/registrations'
   }
 
-  resources :customers, only: [:show, :edit, :update,:destroy]
-
   namespace :admin do
     resources :items
+    resources :customers
   end
+  resources :deliver_infos
+  post 'deliver_infos', to: 'deliver_infos#create', as: 'create_deliver_info'
+
+  resources :customers, only: [:show, :edit, :update,:destroy]
 
   scope module: :customers do
     resources :admin, only: [:index,:show,:edit,:update,:destroy]
   end
+
 
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"

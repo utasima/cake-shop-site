@@ -13,7 +13,7 @@ class CartItemsController < ApplicationController
   def update
   end
 
-  def edit
+  def edit 
     @item = Item.find(params[:id])
   end
   private
