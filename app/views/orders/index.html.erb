@@ -1,4 +1,4 @@
-<%= @user.order_items.each do |order_items| %>
+<% @order.items.each do |order_items| %>
   <%= order_items.name %>
   <%= attachment_image_tag(order_items, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg",size:"30x30")%>
   <%= order_items.price%>

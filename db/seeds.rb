@@ -11,6 +11,7 @@ Item.create(
   description: "テスト,テスト,テスト",
   price: "700円"
 )
-Customer.create{
-  
-}
+OrderItem.create(
+  item_id: 1,
+)
+
