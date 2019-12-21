@@ -1,5 +1,5 @@
 <%= "配送先新規作成" %><br />
-  <%= from_for @deliver_info do |deliver_info_form| %>
+  <%= form_for @deliver_info do |deliver_info_form| %>
     <%= deliver_info_form.label :name, "宛名" %>
     <%= deliver_info_form.text_field :name %><br />
     <%= deliver_info_form.label :postal_code, "郵便番号" %>

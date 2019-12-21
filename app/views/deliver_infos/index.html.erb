@@ -4,12 +4,15 @@
     <%= deliver.name %>
     <%= deliver.postal_code %>
     <%= deliver.address %>
+    <%= link_to edit_deliver_info_path(deliver) do %>
+    <div class="btn btn-outline-primary">配達先の編集</div>
+    <% end %>
 <% end %>
 
 
 
-<%= link_to edit_deliver_info_path(@deliver_info) do %>
-<div class="btn btn-outline-primary">新規で配達先を追加</div>
+<%= link_to edit_deliver_info_path(current_customer) do %>
+<div class="btn btn-outline-primary">配達先の編集</div>
 <% end %>
 <%= link_to new_deliver_info_path(@deliver_info) do %>
 <div class="btn btn-outline-primary">新規で配達先を追加</div>
