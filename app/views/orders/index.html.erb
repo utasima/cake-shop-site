@@ -1,14 +1,5 @@
-注文情報入力
-
-<%= form_for @order, url:orders_new_path do |f| %>
-<%= f.label :支払い方法選択%>
-
-<h6>お届け先情報入力</h6>
-<%= f.label :氏名%>
-<%= f.text_field :name %>
-<%= f.label :郵便番号 %>
-<%= f.text_field :order_postal_code %>
-<%= f.label :住所%>
-<%= f.text_area :adress %>
-<%= f.submit :注文確認 %>
+<%= @user.order_items.each do |order_items| %>
+  <%= order_items.name %>
+  <%= attachment_image_tag(order_items, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg",size:"30x30")%>
+  <%= order_items.price%>
 <% end %>

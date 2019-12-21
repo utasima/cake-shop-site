@@ -25,5 +25,8 @@ Rails.application.routes.draw do
   
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"
+
   resources :cart_items, only: [:index,:destroy,:create,:update]
+
+  resources :orders
 end
