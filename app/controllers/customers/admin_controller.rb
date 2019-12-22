@@ -23,6 +23,13 @@ class Customers::AdminController < ApplicationController
 		redirect_to admin_index_path
 	end
 
+	def active
+		customer = Customer.with_deleted.find(params[:id])
+		customer.restore
+		redirect_to admin_index_path
+	end
+
+
 	private
 
 	def customer_params

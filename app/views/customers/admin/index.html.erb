@@ -1,29 +1,37 @@
-、<div class = "index-title">
-				<h2>顧客情報</h2>
-			</div>
-			<div class = "index-items">
-				<table class = "table table-striped">
-					<tr align = "center">
-						<th>名前</th>
-						<th>名前(カナ)</th>
-						<th>メールアドレス</th>
-						<th>電話番号</th>
-						<th></th>
-						<th></th>
-						<th></th>
-					</tr>
-							<!-- 繰り返し処理 -->
-					<% @customers.each do |customer| %>
-						<tr>
-							<td><%= customer.last_name %><%= customer.first_name %></td>
-							<td><%= customer.last_name_kana %><%= customer.first_name_kana %></td>
-							<td><%= customer.email %></td>
-							<td><%= customer.phone_number %></td>
-							<td><%= link_to "Show", admin_path(customer) %></td>
-							<td><%= link_to "Edit",edit_admin_path(customer) %></td>
-							<td><%= link_to "Destroy", admin_path(customer), method: :delete, "data-confirm" => "本当に消しますか？", class: "customer-destroy-btn" %></td>
-						</tr>
-					<% end %>
-				</table>
-				<%= paginate @customers, class: "paginate" %>
-			</div>
+<div class = "index-title">
+	<h2>顧客情報</h2>
+</div>
+<div class = "index-items">
+	<table class = "table table-striped">
+		<tr align = "center">
+			<th>名前</th>
+			<th>名前(カナ)</th>
+			<th>メールアドレス</th>
+			<th>電話番号</th>
+			<th>会員ステータス</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+				<!-- 繰り返し処理 -->
+		<% @customers.each do |customer| %>
+			<tr>
+				<td><%= customer.last_name %><%= customer.first_name %></td>
+				<td><%= customer.last_name_kana %><%= customer.first_name_kana %></td>
+				<td><%= customer.email %></td>
+				<td><%= customer.phone_number %></td>
+				<% if customer.paranoia_destroyed? %>
+					<td><span>退会</span></td>
+				<% else %>
+					<td><span>有効</span></td>
+				<% end %>
+				<td><%= link_to "Show", admin_path(customer) %></td>
+				<td><%= link_to "Edit",edit_admin_path(customer) %></td>
+				<td><%= link_to "退会", admin_path(customer), method: :delete, "data-confirm" => "退会状態に変更しますか？", class: "customer-destroy-btn" %></td>
+				<td><%= link_to "有効", admin_active_path(customer), method: :put, "data-confirm" => "有効状態に戻しますか？", class: "customer-active-btn" %></td>
+			</tr>
+		<% end %>
+	</table>
+	<%= paginate @customers, class: "paginate" %>
+</div>
