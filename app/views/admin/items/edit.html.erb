@@ -1,0 +1,11 @@
+<%= form_for @item , url:admin_item_path do |f| %>
+<%= f.label :商品名 %>
+<%= f.text_field :name %>
+<div>
+  <%= f.label :値段 %>
+  <%= f.number_field :price %>円
+</div>
+<%= f.label :説明文 %>
+<%= f.text_area :description%>
+<%= f.submit "編集する" %>
+<% end %>

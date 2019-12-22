@@ -40,8 +40,6 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :customers_address
       t.string :encrypted_password
       t.boolean :is_deleted
-      t.string :profile_image_id
-
       t.timestamps null: false
     end
 
