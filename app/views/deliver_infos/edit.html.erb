@@ -1,32 +1,30 @@
-<div class="container-fluid">
-  <div class="row">
+<br><br>
+<div class="container">
+        <div class="row">
+            <div class= "col-md-8">
+              <h4>配送先編集</h4>
+                <%= form_for @deliver_info do |deliver_info_form| %>
+                  <table class="table table-bordered">
+                      <tbody>
+                        <tr>
+                          <th class="table-secondary">郵便番号</th>
+                            <td><%= deliver_info_form.text_field :postal_code %></td>
+                        </tr>
+                        <tr>
+                          <th class="table-secondary">住所</th>
+                          <td><%= deliver_info_form.text_field :address %></td>
+                        </tr>
+                        <tr>
+                          <th class="table-secondary">宛名</th>
+                          <td><%= deliver_info_form.text_field :name %></td>
+                        </tr>
+                      </tbody>
+                  </table>
+                  </div>
+                  <div class= "col-md-2">
+                    <br><br><br><br><br><br><br>
+                    <span><%= deliver_info_form.submit '編集する', class: 'btn btn-info px-5' %></span>
+                  </div>
+                  <% end %>
 
-<div class="col-7 offset-md-1">
-
-<h1><%= "配送先編集" %><h1><br />
-<%= form_for @deliver_info do |deliver_info_form| %>
-
-<table class="table table-light">
-  <tbody>
-    <tr>
-      <td><%= deliver_info_form.label :postal_code, "郵便番号" %></td>
-      <td><%= deliver_info_form.text_field :postal_code %></td>
-    </tr>
-    <tr>
-      <td><%= deliver_info_form.label :name, "宛名" %></td>
-      <td><%= deliver_info_form.text_field :name %></td>
-    </tr>
-    <tr>
-      <td><%= deliver_info_form.label :address, "住所" %></td>
-      <td><%= deliver_info_form.text_field :address %></td>
-      <td><div class="actions">
-    <%= deliver_info_form.submit('編集する',class: 'btn btn-primary btn-lg my-1 mb-5 px-5') %></td>
-    </tr>
-  </tbody>
-</table>
-<% end %>
-
-</div>
-
- </div>
-</div>
+     

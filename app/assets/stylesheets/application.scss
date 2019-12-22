@@ -19,6 +19,7 @@
 @import "bootstrap";
 @import "home";
 
+
 /* 退会ページ */
 .button-unsubscribe{
 	margin: 0 auto;
@@ -30,4 +31,14 @@
 	margin: 0 auto;
 	text-align: center;
 }
+
+/*nav*/
+.nav_item {
+	margin-right: 30px;
+}
+
+.navbar-nav{
+	margin-right: 50px;
+}
+
 
