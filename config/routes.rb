@@ -20,11 +20,19 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :items
     resources :customers
+    resources :genres
   end
+
+  post 'admin/genres', to: 'admin/genres#create', as: 'create_admin_genre'
+  patch 'admin/genres/:id/regeneration', to: 'admin/genres#regeneration', as: 'regeneration_admin_genre'
+
   resources :deliver_infos
   post 'deliver_infos', to: 'deliver_infos#create', as: 'create_deliver_info'
+
   resources :customers, only: [:show, :edit, :update]
+  
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"
+
   resources :cart_items, only: [:index,:destroy,:create,:update]
 end

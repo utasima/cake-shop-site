@@ -6,6 +6,5 @@ class Customer < ApplicationRecord
   
   attachment :profile_image       
 
-  has_many :deliver_infos#, dependent: :destroy
-  accepts_nested_attributes_for :deliver_infos
+  has_many :deliver_infos
 end
