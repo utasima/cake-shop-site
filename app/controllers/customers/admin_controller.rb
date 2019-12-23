@@ -4,21 +4,21 @@ class Customers::AdminController < ApplicationController
 	end
 
 	def show
-		@customer = Customer.find(params[:id])
+		@customer = Customer.with_deleted.find(params[:id])
 	end
 
 	def edit
-		@customer = Customer.find(params[:id])
+		@customer = Customer.with_deleted.find(params[:id])
 	end
 
 	def update
-		customer = Customer.find(params[:id])
+		customer = Customer.with_deleted.find(params[:id])
   		customer.update(customer_params)
   		redirect_to customer_path(customer)
 	end
 
 	def destroy
-		customer = Customer.find(params[:id])
+		customer = Customer.with_deleted.find(params[:id])
 		customer.destroy
 		redirect_to admin_index_path
 	end
@@ -28,7 +28,6 @@ class Customers::AdminController < ApplicationController
 		customer.restore
 		redirect_to admin_index_path
 	end
-
 
 	private
 

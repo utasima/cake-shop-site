@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :admin, only: [:index,:show,:edit,:update,:destroy]
   end
   put "admin/:id/active/" => "customers/admin#active", as: "admin_active"
-
+  
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"
   resources :cart_items, only: [:index,:destroy,:create,:update]
