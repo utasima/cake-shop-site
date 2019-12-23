@@ -24,7 +24,7 @@
   overflow: hidden;
   position: relative;
   min-width: 960px;
-  height: 600px;
+  height: 850px;
 }
 
 .slideshow img {
@@ -38,6 +38,7 @@
   display: inline;
 }
 
+
 /* 共通レイアウト */
 .container{
 	margin-top: 20px;
@@ -45,22 +46,23 @@
 
 
 /* 退会ページ */
-.button-unsubscribe{
-	margin: 0 auto;
-	text-align: center;
+.button-unsubscribe {
+  margin: 0 auto;
+  text-align: center;
 }
 
 /*会員登録情報*/
 .button-edit {
-	margin: 0 auto;
-	text-align: center;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /*nav*/
 .nav_item {
-	margin-right: 30px;
+  margin-right: 30px;
 }
 
-.navbar-nav{
-	margin-right: 50px;
+.navbar-nav {
+  margin-right: 50px;
 }
+

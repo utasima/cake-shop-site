@@ -22,7 +22,6 @@ class DeliverInfosController < ApplicationController
   def update
     if
       @deliver_info.update(deliver_info_params)
-      @deliver_infos = DeliverInfo.all
       redirect_to deliver_infos_path(@deliver_infos), notice: '更新しました。'
     else
       render action: :edit
