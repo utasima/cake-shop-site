@@ -4,8 +4,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  attachment :profile_image       
-
   has_many :deliver_infos
   accepts_nested_attributes_for :deliver_infos
+  acts_as_paranoid
 end

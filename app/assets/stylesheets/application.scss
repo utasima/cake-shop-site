@@ -38,6 +38,13 @@
   display: inline;
 }
 
+
+/* 共通レイアウト */
+.container{
+	margin-top: 20px;
+}
+
+
 /* 退会ページ */
 .button-unsubscribe {
   margin: 0 auto;
@@ -58,3 +65,4 @@
 .navbar-nav {
   margin-right: 50px;
 }
+
