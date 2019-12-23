@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2019_12_21_111840) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "number"
     t.integer "item_id"
-    t.integer "user_id"
+    t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,11 +71,22 @@ ActiveRecord::Schema.define(version: 2019_12_21_111840) do
 
   create_table "items", force: :cascade do |t|
     t.integer "genre_id"
-    t.string "name", null: false
-    t.integer "price", null: false
+    t.string "name"
+    t.integer "price"
     t.text "description"
-    t.boolean "is_deleted", null: false
+    t.boolean "is_deleted"
     t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "order_id"
+    t.integer "item_id"
+    t.integer "number"
+    t.integer "price"
+    t.integer "making_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -91,27 +102,6 @@ ActiveRecord::Schema.define(version: 2019_12_21_111840) do
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_name_kana"
-    t.string "first_name_kana"
-    t.string "phone_number"
-    t.string "customers_postal_code"
-    t.string "customers_address"
-    t.boolean "is_deleted"
-    t.string "profile_image_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
