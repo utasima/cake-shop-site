@@ -3,4 +3,6 @@ class Item < ApplicationRecord
   validates :description , length: {maximum: 1000}
   validates :price , presence: true
   attachment :image
+  belongs_to :genre
+  acts_as_paranoid
 end

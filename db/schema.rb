@@ -62,6 +62,13 @@ ActiveRecord::Schema.define(version: 2019_12_21_104020) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.boolean "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "items", force: :cascade do |t|
     t.integer "genre_id"
     t.string "name", null: false
