@@ -1,8 +1,52 @@
-<h2>会員登録</h2>
+<br>
+<div class="container">
+    <div class="row">
+         <div class= "col-md-6 ">
+          <h1 class="text-center font-weight-bold">Sign Up</h1>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+          <table class="table">
+            <tbody>
+              <tr>
+                <th>氏名</th>
+                <td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
+              </tr>
+               <tr>
+                <th>カナ</th>
+                <td><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></td>
+              </tr>
+              <tr>
+                <th>メールアドレス</th>
+                <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+              </tr>
+               <tr>
+                <th>電話番号</th>
+                <td><%= f.text_field :phone_number %></td>
+              </tr>
+               <tr>
+                <th>郵便番号</th>
+                <td><%= f.text_field :customers_postal_code %></td>
+              </tr>
+               <tr>
+                <th>住所</th>
+                <td><%= f.text_field :customers_address %></td>
+              </tr>
+               <tr>
+                <th>パスワード</th>
+                <td><% if @minimum_password_length %>
+                    <em>(<%= @minimum_password_length %>文字以上で入力してください)</em>
+                    <% end %>
+                    <%= f.password_field :password, autocomplete: "new-password" %></td>
+              </tr>
+               <tr>
+                <th>パスワード(確認)</th>
+                <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+              </tr>
+            </tbody>
+          </table>
 
+<<<<<<< HEAD
   <div class="field">
     <%= f.label :last_name, "姓" %><br />
     <%= f.text_field :last_name %>
@@ -58,7 +102,18 @@
 
   <div class="actions">
     <%= f.submit "登録" %>
-  </div>
-<% end %>
+=======
+          <br>
+          <div class="actions text-right">
+            <%= f.submit "登録",class: 'btn btn-info px-5' %>
+            <%= render "customers/shared/links" %>
+          </div>
+        <% end %>
 
-<%= render "customers/shared/links" %>
+          <br><br>
+
+    </div>
+>>>>>>> f68154d2e228a0b4b2b3add1fde2f69990ad0fe7
+  </div>
+</div>
+

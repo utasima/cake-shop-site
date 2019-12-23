@@ -7,4 +7,5 @@ class Customer < ApplicationRecord
   attachment :profile_image       
 
   has_many :deliver_infos
+  accepts_nested_attributes_for :deliver_infos
 end

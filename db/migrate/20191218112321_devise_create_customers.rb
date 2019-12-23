@@ -39,9 +39,7 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :customers_postal_code
       t.string :customers_address
       t.string :encrypted_password
-      t.boolean :is_deleted
-      t.string :profile_image_id
-
+      t.boolean :deleted_at
       t.timestamps null: false
     end
 

@@ -7,19 +7,28 @@ Rails.application.routes.draw do
   get 'about' => "home#about"
   get 'customer/edit_password' => "customers#edit_password"
   post'customer/update_password' => "customers#update_password"
+<<<<<<< HEAD
+=======
+
+  get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
+
+>>>>>>> f68154d2e228a0b4b2b3add1fde2f69990ad0fe7
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
     registrations: 'admins/registrations'
   }
+
   devise_for :customers, controllers: {
     sessions:      'customers/sessions',
     passwords:     'customers/passwords',
     registrations: 'customers/registrations'
   }
+
   namespace :admin do
     resources :items
     resources :customers
+<<<<<<< HEAD
     resources :genres
   end
 
@@ -31,6 +40,19 @@ Rails.application.routes.draw do
 
   resources :customers, only: [:show, :edit, :update]
   
+=======
+  end
+  resources :deliver_infos
+  post 'deliver_infos', to: 'deliver_infos#create', as: 'create_deliver_info'
+
+  resources :customers, only: [:show, :edit, :update,:destroy]
+
+  scope module: :customers do
+    resources :admin, only: [:index,:show,:edit,:update,:destroy]
+  end
+
+
+>>>>>>> f68154d2e228a0b4b2b3add1fde2f69990ad0fe7
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"
 
