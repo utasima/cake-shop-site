@@ -46,6 +46,6 @@ class Admin::GenresController < ApplicationController
   end
 
   def genre_params
-    params.require(:genre).permit(:deleted_at, :name, )
+    params.require(:genre).permit(:deleted_at, :name)
   end
 end
