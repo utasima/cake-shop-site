@@ -14,7 +14,7 @@ class Customers::AdminController < ApplicationController
 	def update
 		customer = Customer.with_deleted.find(params[:id])
   		customer.update(customer_params)
-  		redirect_to customer_path(customer)
+  		redirect_to admin_path(customer)
 	end
 
 	def destroy
@@ -28,6 +28,7 @@ class Customers::AdminController < ApplicationController
 		customer.restore
 		redirect_to admin_index_path
 	end
+
 
 	private
 
