@@ -67,7 +67,9 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'devise'
 gem 'font-awesome-rails'
+gem 'pry-byebug'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
-gem 'paranoia'
+gem "kaminari","~> 1.1.1"
+gem "paranoia"

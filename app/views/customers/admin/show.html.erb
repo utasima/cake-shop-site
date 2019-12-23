@@ -1,14 +1,10 @@
-<% if customer_signed_in? %>
-<br>
+<%# if customer_signed_in? %>
 <div class="container">
 		<div class="row">
 			<div class= "col-md-8">
-
-	<h4>マイページ</h4><br><br>
-
 	<span class="h4 text-center font-weight-bold">登録情報 </span>
 		<span class= "button-show">
-		<%=link_to "編集", edit_customer_path(@customer),class: 'btn btn-info' %>
+		<%=link_to "編集",  edit_admin_path(@customer),class: 'btn btn-info' %>
 		<%= link_to "パスワードを変更する", customer_edit_password_path,class: 'btn btn-info' %>
 		</span><br><br>
 	<table class="table table-bordered">
@@ -45,6 +41,6 @@
 				<h4 class="font-weight-bold">注文履歴</h4>
 			</div>
 		</div>
-	</div>
+</div>
 
-<% end %>
+<%# end %>

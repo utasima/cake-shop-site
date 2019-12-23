@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
 # Item.create(
 #   name: "商品1",
 #   description: "テスト,テスト,テスト",
@@ -17,3 +18,4 @@
 #   address: "テスト,テスト,テスト",
 #   price: "700円"
 # )
+
