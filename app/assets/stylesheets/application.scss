@@ -20,6 +20,7 @@
 @import "home";
 
 
+
 .slideshow {
   overflow: hidden;
   position: relative;
@@ -37,3 +38,10 @@
 .no-js .slideshow img:first-child {
   display: inline;
 }
+
+/* 退会ページ */
+.button-unsubscribe{
+	margin: 0 auto;
+	text-align: center;
+}
+
