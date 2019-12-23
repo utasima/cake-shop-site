@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'about' => "home#about"
 
-  resources :costomers, only: [:show, :edit, :update]
-  get "cancel" => 'costomers/cancel'
+  
+  get "cancel" => 'customers/cancel'
 
+  get 'customer/edit_password' => "customers#edit_password"
+  post'customer/update_password' => "customers#update_password"
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -19,11 +21,17 @@ Rails.application.routes.draw do
     passwords:     'customers/passwords',
     registrations: 'customers/registrations'
   }
+  resources :customers, only: [:show, :edit, :update]
+
   namespace :admin do
     resources :items
   end
-  
+
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"
+
+  delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
   resources :cart_items, only: [:index,:destroy,:create,:update]
+
+  resources :orders
 end
