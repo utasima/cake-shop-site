@@ -6,17 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-<<<<<<< HEAD
+
 Item.create(
   name: "商品1",
   description: "テスト,テスト,テスト",
   price: "700円"
 )
-=======
-Item.create!(
-  title: '冬のサンタSケーキ',
-  price: '200000000000',
-  description: 'サンタが届けるあなただけのスペシャルケーキ',
-  # image: 'テスト太郎',
-)
->>>>>>> a9ff5da2e7fa24e5d6419b2fca8c717564e4780c

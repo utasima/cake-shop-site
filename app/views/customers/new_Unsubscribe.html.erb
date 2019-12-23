@@ -15,7 +15,7 @@
 					<h4 class="text-center">退会する場合は、「退会する」をクリックしてください。</h4>
 					<br>
 
-					<div class= "col-md-3 col-md-offset-3 button-unsubscribe">
+					<div class= "button-unsubscribe">
 						<%= link_to "退会しない", customer_path(current_customer) ,class: 'btn btn-info' %><span> </span>
 							<%= link_to "退会する", customer_registration_path,class: 'btn btn-danger', method: :delete %>
 						<br>
