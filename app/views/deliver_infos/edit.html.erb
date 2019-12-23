@@ -1,9 +1,9 @@
-<br><br>
+<%= form_for @deliver_info do |deliver_info_form| %>
+
 <div class="container">
         <div class="row">
             <div class= "col-md-8">
               <h4>配送先編集</h4>
-                <%= form_for @deliver_info do |deliver_info_form| %>
                   <table class="table table-bordered">
                       <tbody>
                         <tr>
@@ -25,4 +25,4 @@
                     <br><br><br><br><br><br><br>
                     <span><%= deliver_info_form.submit '編集する', class: 'btn btn-info px-5' %></span>
                   </div>
-                  <% end %>
+<% end %>
