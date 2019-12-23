@@ -7,5 +7,4 @@ class Item < ApplicationRecord
   has_many :order_items
   has_many :cart_items
   
-  acts_as_paranoid
 end
