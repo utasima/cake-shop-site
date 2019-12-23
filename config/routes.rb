@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"
 
+  delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
   resources :cart_items, only: [:index,:destroy,:create,:update]
 
   resources :orders
