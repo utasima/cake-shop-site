@@ -13,7 +13,6 @@ class DeliverInfosController < ApplicationController
     @deliver_info = DeliverInfo.new(deliver_info_params)
     @deliver_info.customer_id = current_customer.id
     if @deliver_info.save
-      @deliver_infos = DeliverInfo.all
       redirect_to deliver_infos_path(@deliver_infos), notice: '住所を追加しました'
     else
       render action: :index
@@ -23,7 +22,6 @@ class DeliverInfosController < ApplicationController
   def update
     if 
       @deliver_info.update(deliver_info_params)
-      @deliver_infos = DeliverInfo.all
       redirect_to deliver_infos_path(@deliver_infos), notice: '更新しました。'
     else
       render action: :edit

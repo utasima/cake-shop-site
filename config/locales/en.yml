@@ -31,8 +31,3 @@
 
 en:
   hello: "Hello world"
-    enums:
-    genre:
-      deleted_at:
-        activated: "有効"
-        disable: "無効"
