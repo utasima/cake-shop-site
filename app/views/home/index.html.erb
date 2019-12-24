@@ -1,3 +1,4 @@
+
 <div class="slideshow">
   <img src="/assets/slide-1.jpg" alt="" width="2000" height="1050">
   <img src="/assets/slide-2.jpg" alt="" width="2000" height="1050">
@@ -7,9 +8,14 @@
 <br><br>
 <h2 class="text-center font-weight-bold">カテゴリー</h2>
 
+<div class="container pt-3"><h1>商品一覧</h1></div> 
 
-
-
-
-
+<% @items.each do |item| %>
+    <div class="container">
+      <%= link_to attachment_image_tag(item, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg"), item_path(item) %>
+    </div>
+    <%= item.name %>
+    <%= item.description %>
+    <%= item.price %>
+<% end %>
 
