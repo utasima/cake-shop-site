@@ -18,29 +18,11 @@
                 </tr>
                  <tr>
                     <th>支払い方法</th>
-                    <td>
-                        <% if @order_status == 0 %>
-                            銀行振り込み
-                        <% else %>
-                            クレジット
-                        <% end %>
-                    </td>
+                    <td><%= @order.payment %></td>
                 </tr>
                  <tr>
                     <th>ステータス</th>
-                    <td>
-                        <% if @order_status == 0 %>
-                            入金待ち
-                        <% elsif @order_status == 1 %>
-                            入金確認
-                        <% elsif @order_status == 2 %>
-                            製造中
-                        <% elsif @order_status == 3 %>
-                            発送準備中
-                        <% else %>
-                            発送済み
-                        <% end %>
-                    </td>
+                    <td><%= @order.order_status %></td>
                 </tr>
             </table>
         </div>
