@@ -6,12 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Item.create(
-  name: "商品1",
-  description: "テスト,テスト,テスト",
-  price: "700円"
-)
-OrderItem.create(
-  item_id: 1,
-)
 
+# Item.create(
+#   name: "商品1",
+#   description: "テスト,テスト,テスト",
+#   price: "700円"
+# )
+# DeliverInfo.create(
+#   name: "商品1",
+#   address: "テスト,テスト,テスト",
+#   price: "700円"
+# )

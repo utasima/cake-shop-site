@@ -28,7 +28,7 @@ class CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
-  def edit
+  def edit 
     @item = Item.find(params[:id])
   end
 

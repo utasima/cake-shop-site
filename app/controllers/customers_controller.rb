@@ -4,7 +4,11 @@ class CustomersController < ApplicationController
   end
 
   def show
-  	@customer = Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
+  end
+
+  def new
+    @customer = User.new
   end
 
   def update
@@ -22,12 +26,22 @@ class CustomersController < ApplicationController
   	redirect_to new_customer_session_path
   end
 
+  def new_Unsubscribe
+  	current_customer
+  end
+
+  def destroy
+  	customer = Customer.find(params[:id])
+  	customer.destroy
+  	redirect_to root_path
+  end
+
   def cancel
   end
 
   private
   def customer_params
   	  params.require(:customer).permit(:last_name_kana, :first_name_kana, :last_name, :first_name, :customers_postal_code,
-  	  	:customers_address, :phone_number, :email, :encrypted_password, :profile_image)
+  	  	:customers_address, :phone_number, :email, :encrypted_password)
   end
 end

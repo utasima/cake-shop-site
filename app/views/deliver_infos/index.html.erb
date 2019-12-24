@@ -1,0 +1,59 @@
+<br><br>
+<div class="container">
+        <div class="row">
+            <div class= "col-md-8">
+                <h4>配達先登録/一覧</h4>
+
+                  <%= form_for(@deliver_info, url: create_deliver_info_path) do |deliver_info_form| %>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <th class="table-secondary">郵便番号</th>
+                                <td><%= deliver_info_form.text_field :postal_code %></td>
+                            </tr>
+                            <tr>
+                                <th class="table-secondary">住所</th>
+                                <td><%= deliver_info_form.text_field :address %></td>
+                            </tr>
+                            <tr>
+                                <th class="table-secondary">宛名</th>
+                                <td><%= deliver_info_form.text_field :name %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class= "col-md-2">
+                    <br><br><br><br><br><br><br>
+                    <span><%= deliver_info_form.submit '登録', class: 'btn btn-info px-5' %></span>
+                </div>
+
+                <% end %>
+        <div class= "col-md-8">
+
+         <p id="notice"><%= notice %></p>
+
+            <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="table-secondary">郵便番号</th>
+                            <th class="table-secondary">住所</th>
+                            <th class="table-secondary">宛名</th>
+                            <th class="table-secondary"></th>
+                        </tr>
+                    </thead>
+                        <% @deliver_infos.each do |deliver| %>
+                    <tbody>
+                        <tr>
+                            <td><%= deliver.postal_code %></td>
+                            <td><%= deliver.address %></td>
+                            <td><%= deliver.name %></td>
+                            <td><%= link_to '編集する', edit_deliver_info_path(deliver), class: 'btn btn-info px-5' %>
+                                <%= link_to '削除する', deliver, method: :delete, class: 'btn btn-danger px-5', data: { confirm: '本当によろしいですか?' } %></td>
+                        </tr>
+                    </tbody>
+                    <% end %>
+            </table>
+            <br>
+        </div>
+    </div>
+</div>
