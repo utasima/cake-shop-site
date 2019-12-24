@@ -1,2 +1,27 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<h1>注文情報入力</h1>
+<%= form_for @order do |f|%>
+<div class="form-group">
+  <%= f.label :配送先住所 %>
+    <div class="container">
+        <div class="row">
+                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#testModal">配送先を選択</button>
+        </div>
+    </div>
+  <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">配送先一覧</h4>
+                </div>
+                <div class="modal-body">
+                  <p>配送先挿入予定</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  <%= f.submit "購入確認" %>
+</div>
+<% end %>
