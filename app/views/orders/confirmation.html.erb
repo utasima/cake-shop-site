@@ -30,6 +30,7 @@
                 <table class="table table-bordered">
 
                 	<tbody>
+                        <br>
                     	<tr>
                     		<th class="table-secondary">送料</th>
                     		<td>800</td>
@@ -45,14 +46,29 @@
                     </tbody>
                 </table>
             </div>
-            <h4>支払方法</h4>
-            <h4>お届け先</h4>
-            <%= session[:order]['order_postal_code'] %>
-            <%= session[:order]['address'] %>
-            <%= session[:order]['name'] %>
 
-            <%= link_to '購入を確定する',orders_path,  total_price: total+800, customer_id:current_customer, order_status:@order_status, class: 'btn btn-info', method: :post%>
+            <div class= "col-md-9">
+            <table class="table">
+
+                    <tbody>
+                        <tr>
+                            <th class="h5">支払方法</th>
+                            <td><%= session[:order]['payment'] %></td>
+                        </tr>
+                        <tr>
+                            <th class="h5">お届け先</th>
+                            <td><%= session[:order]['order_postal_code'] %>
+                                <%= session[:order]['address'] %>
+                                <%= session[:order]['name'] %>
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+
+            <%= link_to '購入を確定する',orders_path,  total_price: total+800, customer_id:current_customer, order_status:@order_status, class: 'btn btn-info px-3 pull-right', method: :post%>
+            </div>
 
 		</div>
 </div>
+<br><br>
 

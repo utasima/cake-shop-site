@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post'customer/update_password' => "customers#update_password"
   get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
   get 'orders/confirmation' => "orders#confirmation"
+  get 'orders/thanks' => "orders#thanks"
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',

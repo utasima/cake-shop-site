@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   end
 
-  def thanks
+  def  thanks
   end
 
   def destroy
@@ -26,22 +26,27 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new
-    if params[:address] == "登録先住所"
-      @select_address = DeliverInfo.find(params[:registered_address])
-      @order.name = @select_address.name
-      @order.order_postal_code = @select_address.postal_code
-      @order.address = @select_address.address
-    elsif params[:address]  == "ご自身の住所"
-      @order.name = params[:customers_name]
-      @order.order_postal_code = params[:customers_postal_code]
-      @order.address = params[:customers_address]
+    unless session[:order]
+      @order.payment = params[:payment]
+      if params[:address] == "登録先住所"
+        @select_address = DeliverInfo.find(params[:registered_address])
+        @order.name = @select_address.name
+        @order.order_postal_code = @select_address.postal_code
+        @order.address = @select_address.address
+      elsif params[:address]  == "ご自身の住所"
+        @order.name = params[:customers_name]
+        @order.order_postal_code = params[:customers_postal_code]
+        @order.address = params[:customers_address]
+      else
+        @order.name = params[:new_name]
+        @order.order_postal_code = params[:new_postal_code]
+        @order.address = params[:new_address]
+      end
+      session[:order] = @order
+      redirect_to orders_confirmation_path
     else
-      @order.name = params[:new_name]
-      @order.order_postal_code = params[:new_postal_code]
-      @order.address = params[:new_address]
-    end
-    session[:order] = @order
-    redirect_to orders_confirmation_path
+      redirect_to orders_thanks_path
+      session[:order] =  nil
     # session[:order] = Order.new(
     #   postage: 800,
     #   total_price: params[:total_price],
@@ -49,7 +54,7 @@ class OrdersController < ApplicationController
     #   customer_id: params[:customer_id]
     # )
   end
-
+end
   private
   def order_params
     params.require(:order).permit(:name,:address,:order_postal_code,:payment)
