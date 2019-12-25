@@ -7,7 +7,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :payment
       t.string :name
       t.string :order_postal_code
-      t.string :adress
+      t.string :address
       t.integer :customer_id
 
       t.timestamps

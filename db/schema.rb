@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2019_12_25_002648) do
     t.string "customers_postal_code"
     t.string "customers_address"
     t.boolean "deleted_at"
-    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -64,7 +63,7 @@ ActiveRecord::Schema.define(version: 2019_12_25_002648) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.boolean "deleted_at"
+    t.boolean "deleted_at", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,7 +73,11 @@ ActiveRecord::Schema.define(version: 2019_12_25_002648) do
     t.string "name", null: false
     t.integer "price", null: false
     t.text "description"
+<<<<<<< HEAD
     t.boolean "is_deleted", null: false
+=======
+    t.boolean "deleted_at"
+>>>>>>> db05e13c7fe75ccbe315be4c6b5baa9d17162d15
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -99,7 +102,7 @@ ActiveRecord::Schema.define(version: 2019_12_25_002648) do
     t.integer "payment"
     t.string "name"
     t.string "order_postal_code"
-    t.string "adress"
+    t.string "address"
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -118,8 +121,7 @@ ActiveRecord::Schema.define(version: 2019_12_25_002648) do
     t.string "phone_number"
     t.string "customers_postal_code"
     t.string "customers_address"
-    t.boolean "is_deleted"
-    t.string "profile_image_id"
+    t.boolean "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
