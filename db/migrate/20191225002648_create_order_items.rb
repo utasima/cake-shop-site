@@ -13,5 +13,3 @@ class CreateOrderItems < ActiveRecord::Migration[5.2]
     add_index :order_items, :making_status
   end
 end
-
-
