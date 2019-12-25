@@ -84,4 +84,15 @@
             </table>
         </div>
     </div>
-</div>
+</div>　　　　　　order_item.in_production!
+
+
+                        <h2>ステータスの更新</h2>
+                        <%= form_for(@order url: admin_order_path) do |status| %>
+
+													<%= form.collection_radio_buttons(:order, status, :making_status) %>
+
+											
+                            
+                            <%= status.submit('ステータスを更新',class: 'btn btn-primary btn-lg my-1 mb-5 px-5') %>
+                        <% end %>

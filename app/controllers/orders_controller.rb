@@ -38,7 +38,6 @@ class OrdersController < ApplicationController
       @order.order_postal_code = params[:new_postal_code]
       @order.address = params[:new_address]
     end
-    binding.pry
   end
 
   private
