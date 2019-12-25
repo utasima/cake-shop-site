@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   def index
-    @order = Order.new
+    
   end
 
-  def showpa
-  end
+  def show
+    @order = Order.find(params[:id])
 
   def new
     @order = Order.new

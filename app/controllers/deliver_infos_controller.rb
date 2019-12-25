@@ -5,7 +5,7 @@ class DeliverInfosController < ApplicationController
     @deliver_info = DeliverInfo.new
     @deliver_infos = DeliverInfo.all
   end
-  
+
   def edit
   end
 
@@ -18,9 +18,9 @@ class DeliverInfosController < ApplicationController
       render action: :index
     end
   end
-  
+
   def update
-    if 
+    if
       @deliver_info.update(deliver_info_params)
       redirect_to deliver_infos_path(@deliver_infos), notice: '更新しました。'
     else

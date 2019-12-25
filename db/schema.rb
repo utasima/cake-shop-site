@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_085203) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "number"
     t.integer "item_id"
-    t.integer "customer_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,19 +68,20 @@ ActiveRecord::Schema.define(version: 2019_12_23_085203) do
 
   create_table "items", force: :cascade do |t|
     t.integer "genre_id"
-    t.string "name"
-    t.integer "price"
+    t.string "name", null: false
+    t.integer "price", null: false
     t.text "description"
-    t.boolean "deleted_at", null: false
+
+    t.boolean "is_deleted", null: false
+
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "order_id"
     t.integer "item_id"
+    t.integer "order_id"
     t.integer "number"
     t.integer "price"
     t.integer "making_status"
@@ -114,7 +115,10 @@ ActiveRecord::Schema.define(version: 2019_12_23_085203) do
     t.string "phone_number"
     t.string "customers_postal_code"
     t.string "customers_address"
-    t.boolean "deleted_at"
+
+    t.boolean "is_deleted"
+    t.string "profile_image_id"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
