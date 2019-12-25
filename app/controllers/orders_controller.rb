@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
 
   def destroy
   end
-  
+
   def create
     @order = Order.new
     @order.payment = params[:payment]
