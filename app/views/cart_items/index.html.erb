@@ -4,7 +4,7 @@
     <div class="btn btn-danger">カート全削除</div>
   <% end %>
   <% @cart = CartItem.where(customer_id: @user.id) %>
-  <% i = 0%>
+  <% i = 0 %>
   <% @cart.each do |cart| %>
       <div>
         <%= cart.item.name %>
@@ -13,7 +13,7 @@
         <% end %>
         <%= cart.item.price %>
         <p>小計</p>
-        <p><%= cart.item.price * cart.number %>円<p>
+        <p><%= i += cart.item.price * cart.number %>円<p>
         <% i += cart.item.price * cart.number %>
         <%= form_for @number, url: cart_item_path(cart), method: :patch do |f|%>
           <%= f.number_field :number, name:"number",  value:cart.number %>

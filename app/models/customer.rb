@@ -14,3 +14,4 @@ class Customer < ApplicationRecord
   
   accepts_nested_attributes_for :deliver_infos
 end
+
