@@ -25,13 +25,14 @@
                     </tbody>
                 </table>
             </div>
+            <br><br>
             <div class= "col-md-3">
                 <table class="table table-bordered">
 
                 	<tbody>
                     	<tr>
                     		<th class="table-secondary">送料</th>
-                    		<td>500</td>
+                    		<td>800</td>
                     	</tr>
                     	<tr>
                     		<th class="table-secondary">商品合計</th>
@@ -39,18 +40,19 @@
                     	</tr>
                     	<tr>
                     		<th class="table-secondary">請求金額</th>
-                    		<td><%= total + 500 %>/td>
+                    		<td><%= total + 800 %></td>
                     	</tr>
                     </tbody>
                 </table>
             </div>
             <h4>支払方法</h4>
-            <%= @order.payment %>
-
             <h4>お届け先</h4>
-            <%= @order.address %>
+            <%= session[:order]['order_postal_code'] %>
+            <%= session[:order]['address'] %>
+            <%= session[:order]['name'] %>
 
-            <%= link_to '購入を確定する', orders_path, payment: @order.payment, address: @order.address, total_price: total+500, name: @order.name, order_postal_code: @order.postal_code, customer_id:@order.customer_id, class: 'btn btn-info' %>
+            <%= link_to '購入を確定する',orders_path,  total_price: total+800, customer_id:current_customer, order_status:@order_status, class: 'btn btn-info', method: :post%>
 
 		</div>
 </div>
+

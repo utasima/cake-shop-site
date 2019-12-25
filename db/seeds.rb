@@ -10,5 +10,10 @@
 Item.create(
   name: "商品1",
   description: "テスト,テスト,テスト",
-  price: "700円"
+  price: 700
 )
+# DeliverInfo.create(
+#   name: "商品1",
+#   address: "テスト,テスト,テスト",
+#   price: "700円"
+# )

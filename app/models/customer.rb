@@ -9,7 +9,10 @@ class Customer < ApplicationRecord
   has_many :items
   has_many :orders
   has_many :cart_items
+  has_many :order_items
+  
   accepts_nested_attributes_for :deliver_infos
   acts_as_paranoid
 
 end
+
