@@ -20,9 +20,10 @@ class OrdersController < ApplicationController
 
   def destroy
   end
-
+  
   def create
     @order = Order.new
+    @order.payment = params[:payment]
     if params[:address] == "登録先住所"
       @select_address = DeliverInfo.find(params[:registered_address])
       @order.name = @select_address.name
@@ -37,9 +38,7 @@ class OrdersController < ApplicationController
       @order.order_postal_code = params[:new_postal_code]
       @order.address = params[:new_address]
     end
-    binding.pry
   end
-
   private
   def order_params
     params.require(:order).permit(:name,:address,:order_postal_code,:payment)
