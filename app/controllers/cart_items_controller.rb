@@ -1,5 +1,6 @@
 class CartItemsController < ApplicationController
   def index
+    @user = current_customer
   end
 
   def create

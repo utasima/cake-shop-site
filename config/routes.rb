@@ -44,7 +44,6 @@ Rails.application.routes.draw do
   
   put "admin/:id/active/" => "customers/admin#active", as: "admin_active"
 
-  put "admin/:id/active/" => "customers/admin#active", as: "admin_active"
 
 
   resources :items, only: [:index, :show]

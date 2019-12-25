@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-
+  end
   def new
     @order = Order.new
     @deliver = DeliverInfo.where(customer_id: current_customer)
