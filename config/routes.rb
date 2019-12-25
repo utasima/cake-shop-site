@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :items
     resources :customers
     resources :genres
+    resources :orders
   end
 
   post 'admin/genres', to: 'admin/genres#create', as: 'create_admin_genre'
