@@ -2,7 +2,6 @@ class CartItemsController < ApplicationController
   def index
     @user = current_customer
     @number = CartItem.new
-    
   end
 
   def create
