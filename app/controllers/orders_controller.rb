@@ -45,14 +45,15 @@ class OrdersController < ApplicationController
       session[:order] = @order
       redirect_to orders_confirmation_path
     else
-      redirect_to orders_thanks_path
+      @order = Order.new(
+      postage: 800,
+      total_price: params[:total_price],
+      order_status: params[:order_status],
+      customer_id: params[:customer_id]
+      )
+      @order.save
       session[:order] =  nil
-    # session[:order] = Order.new(
-    #   postage: 800,
-    #   total_price: params[:total_price],
-    #   order_status: params[:order_status],
-    #   customer_id: params[:customer_id]
-    # )
+      redirect_to orders_thanks_path
   end
 end
   private
