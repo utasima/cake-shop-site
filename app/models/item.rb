@@ -3,4 +3,5 @@ class Item < ApplicationRecord
   validates :description , length: {maximum: 1000}
   validates :price , presence: true
   attachment :image
+  has_many :cart_items
 end

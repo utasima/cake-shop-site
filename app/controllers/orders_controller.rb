@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
-  def show
+  def showpa
   end
 
   def new
@@ -13,6 +13,9 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
+    # @cart = CartItem.where(customer_id: current_customwer)
+    @carts = current_customer.cart_items
+    @order = Order.new(order_params)
   end
 
   def thanks
@@ -22,6 +25,18 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(
+      postage: 500
+      total_price: params[:total_price]
+      order_status: 
+      payment: params[:payment]
+      name: params[:name]
+      order_postal_code: params[:order_postal_code]
+      adress: params[:adress]
+      customer_id: params[:customer_id]
+
+    )
+
   end
 
   private 

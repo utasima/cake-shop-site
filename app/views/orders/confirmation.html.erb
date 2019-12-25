@@ -1,2 +1,56 @@
-<h1>Orders#confirmation</h1>
-<p>Find me in app/views/orders/confirmation.html.erb</p>
+<div class="container">
+        <div class="row">
+            <div class= "col-md-9">
+				<h4>注文情報確認</h4>
+				<table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="table-secondary">商品名</th>
+                            <th class="table-secondary">単価(税込)</th>
+                            <th class="table-secondary">数量</th>
+                            <th class="table-secondary">小計</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<% total = 0 %>
+                    	<% @carts.each do |cart| %>
+	                    	<tr>
+	                    		<td><%= cart.name %></td>
+	                    		<td><%= cart.item.price %></td>
+	                    		<td><%= cart.number %></td>
+	                    		<td> </td>
+	                    	</tr>
+	                    	<% total += cart.item.price * cart.number %>
+                    	<% end %>
+                    </tbody>
+                </table>
+            </div>
+            <div class= "col-md-3">
+                <table class="table table-bordered">
+
+                	<tbody>
+                    	<tr>
+                    		<th class="table-secondary">送料</th>
+                    		<td>500</td>
+                    	</tr>
+                    	<tr>
+                    		<th class="table-secondary">商品合計</th>
+                    		<td><%= total %></td>
+                    	</tr>
+                    	<tr>
+                    		<th class="table-secondary">請求金額</th>
+                    		<td><%= total + 500 %>/td>
+                    	</tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4>支払方法</h4>
+            <%= @order.payment %>
+
+            <h4>お届け先</h4>
+            <%= @order.address %>
+
+            <%= link_to '購入を確定する', orders_path, payment: @order.payment, address: @order.address, total_price: total+500, name: @order.name, order_postal_code: @order.postal_code, customer_id:@order.customer_id, class: 'btn btn-info' %>
+
+		</div>
+</div>
