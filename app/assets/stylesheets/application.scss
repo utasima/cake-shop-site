@@ -19,6 +19,10 @@
 @import "bootstrap";
 @import "home";
 
+/*共通レイアウト*/
+.container{
+	margin-top: 20px;
+}
 
 .slideshow {
   overflow: hidden;
@@ -37,6 +41,7 @@
 .no-js .slideshow img:first-child {
   display: inline;
 }
+
 
 /* 退会ページ */
 .button-unsubscribe {

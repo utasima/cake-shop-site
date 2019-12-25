@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_111840) do
+ActiveRecord::Schema.define(version: 2019_12_23_085203) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 2019_12_21_111840) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -73,7 +71,7 @@ ActiveRecord::Schema.define(version: 2019_12_21_111840) do
     t.string "name"
     t.integer "price"
     t.text "description"
-    t.boolean "deleted_at"
+    t.boolean "deleted_at", null: false
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
