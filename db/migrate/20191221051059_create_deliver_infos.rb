@@ -10,3 +10,4 @@ class CreateDeliverInfos < ActiveRecord::Migration[5.2]
     end
   end
 end
+<% @cart.each do |cart| %>

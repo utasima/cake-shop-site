@@ -1,27 +1,52 @@
-<h1>注文情報入力</h1>
-<%= form_for @order do |f|%>
-<div class="form-group">
-  <%= f.label :配送先住所 %>
-    <div class="container">
-        <div class="row">
-                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#testModal">配送先を選択</button>
-        </div>
+<div class="container">
+  <div class="row">
+    <div class="offset-2">
+      <div class="d-flex flex-column">
+  <h1>購入情報入力</h1>
+  <%= form_tag(orders_path) do %>
+    <h4>支払方法</h4>
+      <div>
+        <%= radio_button_tag :payment, :クレジットカード, checked: true %>
+        <label>クレジットカード</label>
+      </div>
+      <div>
+        <%= radio_button_tag :payment, :銀行振込 %>
+        <label>銀行振込</label>
+      </div>
+      <h4>お届け先</h4>
+      <div>
+        <%= radio_button_tag :address, :ご自身の住所, checked: true%>
+        <label for="address">ご自身の住所</label>
+      </div>
+      <%= hidden_field_tag :customers_name, @user.last_name + @user.first_name %>
+      <%= hidden_field_tag :customers_postal_code, @user.customers_postal_code %>
+      <%= hidden_field_tag :customers_address, @user.customers_address %>
+        <%= "〒#{@user.customers_postal_code}"+"#{@user.customers_address}"+"#{@user.last_name}"+"#{@user.first_name}" %>
+      <div>
+        <%= radio_button_tag :address, :登録先住所%>
+        <label for="address">登録先住所から選択</label>
+      </div>
+        <%= select_tag(:registered_address, options_for_select(@deliver.collect { |p| ["〒" + p.postal_code + p.address + p.name, p.id]}))%>
+      <div>
+        <%= radio_button_tag :address, :新しいお届け先 %>
+        <label for="address">新しいお届け先</label>
+      </div>
+      <div>
+        <label for="order_postal_code">郵便番号</label>
+        <%= text_field_tag :new_postal_code %><span>ハイフンなし</span>
+      </div>
+      <div>
+        <label for="address">住所</label>
+        <%= text_field_tag :new_address %>
+      </div>
+      <div>
+        <label for="name">宛名</label>
+        <%= text_field_tag :new_name %>
+      </div>
+      </div>
+          <%= submit_tag "確認へ進む", class:"btn btn-primary mx-auto"%>
+        <% end %> 
+      </div>
     </div>
-  <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">配送先一覧</h4>
-                </div>
-                <div class="modal-body">
-                  <p>配送先挿入予定</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
-                </div>
-            </div>
-        </div>
-    </div>
-  <%= f.submit "購入確認" %>
+  </div>
 </div>
-<% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_24_071225) do
+ActiveRecord::Schema.define(version: 2019_12_23_085203) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 2019_12_24_071225) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -46,7 +44,6 @@ ActiveRecord::Schema.define(version: 2019_12_24_071225) do
     t.string "customers_postal_code"
     t.string "customers_address"
     t.boolean "deleted_at"
-    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -74,7 +71,9 @@ ActiveRecord::Schema.define(version: 2019_12_24_071225) do
     t.string "name", null: false
     t.integer "price", null: false
     t.text "description"
+
     t.boolean "is_deleted", null: false
+
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -97,7 +96,7 @@ ActiveRecord::Schema.define(version: 2019_12_24_071225) do
     t.integer "payment"
     t.string "name"
     t.string "order_postal_code"
-    t.string "adress"
+    t.string "address"
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -116,8 +115,10 @@ ActiveRecord::Schema.define(version: 2019_12_24_071225) do
     t.string "phone_number"
     t.string "customers_postal_code"
     t.string "customers_address"
+
     t.boolean "is_deleted"
     t.string "profile_image_id"
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
