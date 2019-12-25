@@ -5,6 +5,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    
   end
 
   def new
@@ -18,27 +19,19 @@ class Admin::OrdersController < ApplicationController
 
 
   def create
-    # @deliver_info = DeliverInfo.new(deliver_info_params)
-    # @deliver_info.customer_id = current_customer.id
-    # if @deliver_info.save
-    #   redirect_to deliver_infos_path(@deliver_infos), notice: '住所を追加しました'
-    # else
-    #   render action: :index
-    # end
   end
 
   def update
-    # if
-    #   @deliver_info.update(deliver_info_params)
-    #   redirect_to deliver_infos_path(@deliver_infos), notice: '更新しました。'
-    # else
-    #   render action: :edit
-    # end
+    @order = Order.find(params[:id])
+    if
+      @order.update(order_params)
+      redirect_to admind_orders_path(@order), notice: '更新しました。'
+    else
+      render action: :show
+    end
   end
 
   def destroy
-    # @deliver_info.destroy
-    # redirect_to deliver_infos_path
   end
 
   private
