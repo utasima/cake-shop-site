@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_23_085203) do
+ActiveRecord::Schema.define(version: 2019_12_25_002648) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_085203) do
     t.string "customers_postal_code"
     t.string "customers_address"
     t.boolean "deleted_at"
+    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -61,7 +62,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_085203) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.boolean "deleted_at", default: true
+    t.boolean "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,9 +72,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_085203) do
     t.string "name", null: false
     t.integer "price", null: false
     t.text "description"
-
     t.boolean "is_deleted", null: false
-
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,12 +80,14 @@ ActiveRecord::Schema.define(version: 2019_12_23_085203) do
 
   create_table "order_items", force: :cascade do |t|
     t.integer "item_id"
-    t.integer "order_id"
+    t.integer "customer_id"
+    t.integer "orderes_id"
     t.integer "number"
     t.integer "price"
-    t.integer "making_status"
+    t.integer "making_status", limit: 3, default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["making_status"], name: "index_order_items_on_making_status"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -96,7 +97,7 @@ ActiveRecord::Schema.define(version: 2019_12_23_085203) do
     t.integer "payment"
     t.string "name"
     t.string "order_postal_code"
-    t.string "address"
+    t.string "adress"
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -115,10 +116,8 @@ ActiveRecord::Schema.define(version: 2019_12_23_085203) do
     t.string "phone_number"
     t.string "customers_postal_code"
     t.string "customers_address"
-
     t.boolean "is_deleted"
     t.string "profile_image_id"
-
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

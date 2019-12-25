@@ -1,19 +1,45 @@
-注文情報入力
+<h1>注文履歴一覧</h1>
 
-<%= form_for @order, url: orders_confirmation_path do |f| %>
-<%= f.label :支払い方法選択%>
+<% @orders.each do |order| %>
 
-<h6>お届け先情報入力</h6>
-<%= f.label :氏名%>
-<%= f.text_field :name %>
-<%= f.label :郵便番号 %>
-<%= f.text_field :order_postal_code %>
-<%= f.label :住所%>
-<%= f.text_area :address %>
-<%= f.submit :注文確認 %>
-<% @order.order_items.each do |order_items| %>
-  <%= order_items.name %>
-  <%= attachment_image_tag(order_items, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg",size:"30x30")%>
-  <%= order_items.price%>
-<% end %>
-<% end %>
+  <h2>注文日</h2>
+  <%= order.order_id.created_at %>
+
+  <h2>配送先</h2>
+  <%= order.order_id.address %>
+
+    <h2>注文商品</h2>
+    <%= order.name%>
+
+  <h2>支払い金額</h2>
+  <%= order.order_id.total_price%>
+
+  <h2>ステータス</h2>
+  <% if order.making_status.finish? || order.order_id.order_status.preparing? %>
+    <h2>発送準備中</h2>
+
+  <% elsif order.making_status.in_production? || order.order_id.order_status.in_production? %>
+    <h2>製造中</h2>
+
+
+  <% elsif order.order_id.order_status.unpaid? %>
+      <h2>入金待ち</h2>
+
+  <% elsif order.order_id.order_status.deposited? %>
+      <h2>入金確認</h2>
+
+  <% elsif order.order_id.order_status.in_production? %>
+      <h2>製造中</h2>
+
+  <% elsif order.order_id.order_status.preparing? %>
+      <h2>発送準備中</h2>
+
+  <% else %>
+      <h2>発送済み</h2>
+      
+  <% end %>
+
+  <h2>注文詳細</h2>
+  <%= link_to '表示する', order_path(order), class: 'btn btn-primary btn-lg my-1 mb-5 px-5' %>
+
+<% end %> 

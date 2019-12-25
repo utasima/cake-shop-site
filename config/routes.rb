@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   get 'cart_items/update'
   root 'home#index'
   get 'about' => "home#about"
-
-  get "cancel" => 'customers/cancel'
-
   get 'customer/edit_password' => "customers#edit_password"
   post'customer/update_password' => "customers#update_password"
   get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
@@ -30,6 +27,7 @@ Rails.application.routes.draw do
     resources :items
     resources :customers
     resources :genres
+    resources :orders
   end
 
   post 'admin/genres', to: 'admin/genres#create', as: 'create_admin_genre'
@@ -52,7 +50,6 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"
 
-  delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
   resources :cart_items, only: [:index,:destroy,:create,:update]
 
   resources :orders
