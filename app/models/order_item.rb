@@ -1,5 +1,5 @@
 class OrderItem < ApplicationRecord
-  has_many :items
+  belongs_to :item
   belongs_to :customer
   belongs_to :order
 

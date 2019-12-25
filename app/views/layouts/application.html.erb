@@ -25,10 +25,23 @@
             <li class="nav_item"><%= link_to fa_icon("shopping-cart 2x"), cart_items_path, class:"nav-item nav-link", alt:"ショッピングカート" %></li>
             <li class="nav_item"><%= link_to fa_icon("sign-out 2x"), destroy_customer_session_path, method: :delete, class:"nav-item nav-link", alt:"ログアウト
             " %></li>
+          <% elsif admin_signed_in? %>
+            <li class="nav_item h3"><%=link_to "Genre","#", class:"nav-item nav-link glyphicon glyphicon-user",alt:"会員一覧" %></li>
+            <li class="nav_item h3"><%=link_to fa_icon("users 1x"),"#", class:"nav-item nav-link" %></li>
+            <li class="nav_item h3"><%=link_to "Orders","#", class:"nav-item nav-link" %></li>
+            <li class="nav_item h3"><%=link_to "Items","#", class:"nav-item nav-link" %></li>
+             <li class="nav_item"><%= link_to fa_icon("sign-out 2x"),  destroy_admin_session_path, method: :delete, class:"nav-item nav-link", alt:"ログアウト
+            " %></li>
           <% else %>
             <li class="nav_item h3"><%= link_to "About", about_path, class:"nav-item nav-link" %></li>
 
-            <li class="nav_item h3"><%= link_to "Sign Up", new_customer_registration_path, class:"nav-item nav-link" %></li>
+            <li class="nav_item h3">
+              <% if controller.controller_name == "admin" %>
+                <%= link_to "Sign Up",new_admin_session_path, class:"nav-item nav-link" %>
+              <% else %>
+                <%= link_to "Sign Up", new_customer_registration_path , class:"nav-item nav-link" %>
+              <% end %>
+              </li>
             <li class="nav_item h3"><%= link_to "Login", new_customer_session_path , class:"nav-item nav-link"; %></li>
           <% end %>
         </ul>

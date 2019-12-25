@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get 'customer/edit_password' => "customers#edit_password"
   post'customer/update_password' => "customers#update_password"
   get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
-
-
+  get 'orders/confirmation' => "orders#confirmation"
+  get 'orders/thanks' => "orders#thanks"
+	
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -40,6 +41,8 @@ Rails.application.routes.draw do
   scope module: :customers do
     resources :admin, only: [:index,:show,:edit,:update,:destroy]
   end
+  
+  put "admin/:id/active/" => "customers/admin#active", as: "admin_active"
 
   put "admin/:id/active/" => "customers/admin#active", as: "admin_active"
 
@@ -51,3 +54,4 @@ Rails.application.routes.draw do
 
   resources :orders
 end
+
