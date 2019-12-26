@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
   def index
     @orders = OrderItem.where(customer_id: current_customer)
+    @orders.each do |order|
+      @order = order
+    end
   end
 
   def show

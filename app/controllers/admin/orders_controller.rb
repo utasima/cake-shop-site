@@ -1,6 +1,32 @@
 class Admin::OrdersController < ApplicationController
   def index
-    @orders = OrderItem.all
+    @orders = Order.all
+
+
+    @orders.each do |o|
+      @order = o
+
+
+      o.order_items.each do |oi|
+
+
+        @order_item = oi
+
+
+
+        i.item.each do |i|
+
+          @item
+
+
+        end
+
+      end
+
+
+
+
+    end
   end
 
   def show
@@ -9,6 +35,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def new
+    @order = Order.new
   end
 
   def confirmation
