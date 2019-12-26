@@ -40,7 +40,7 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     if
       @order.update(order_params)
-      @order_item.update(order_item_params)
+      # @order_item.update(order_item_params)
       redirect_to admin_orders_path(@order), notice: '更新しました。'
     # elsif
     #   @order_item.update(order_item_params)
@@ -57,8 +57,7 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:name,:address,:order_postal_code,:payment,:order_status)
   end
-
-  def order_item_params
-    params.require(:order_item).permit(:number,:price,:making_status)
-  end
+  # def order_item_params
+  #   params.require(:order_item).permit(:number,:price,:making_status)
+  # end
 end
