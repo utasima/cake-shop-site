@@ -15,6 +15,7 @@
                     	<% total = 0 %>
                     	<% @carts.each do |cart| %>
 	                    	<tr>
+                                <td><%= attachment_image_tag(cart.item, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg") %></td>
 	                    		<td><%= cart.item.name %></td>
 	                    		<td><%= cart.item.price %></td>
 	                    		<td><%= cart.number %></td>
