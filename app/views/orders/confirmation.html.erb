@@ -15,7 +15,8 @@
                     	<% total = 0 %>
                     	<% @carts.each do |cart| %>
 	                    	<tr>
-	                    		<td><%= cart.name %></td>
+	                    		<td><%=cart.item.image_id %>
+                                    <%= cart.name %></td>
 	                    		<td><%= cart.item.price %></td>
 	                    		<td><%= cart.number %></td>
 	                    		<td> </td>
