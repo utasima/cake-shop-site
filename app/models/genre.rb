@@ -1,3 +1,3 @@
 class Genre < ApplicationRecord  
-  acts_as_paranoid
+  # acts_as_paranoid
 end

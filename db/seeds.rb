@@ -7,8 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+
+Customer.create(
+  email: "test@test.com", password: "password"
+)
+
+
+
 Item.create!(
-  genre_id: '1',
+  genre_id: 1,
   name: 'ショートサンタケーキ',
   description: 'テスト,テスト,テスト',
   price: '70000',
@@ -16,7 +23,7 @@ Item.create!(
 )
 
 DeliverInfo.create!(
-  customer_id: '5',
+  customer_id: 1,
   name: 'ショートショコラ',
   address: 'テストテストテスト東京',
   postal_code: '2233455'
@@ -24,7 +31,7 @@ DeliverInfo.create!(
 )
 
 Order.create!(
-  customer_id: '5',
+  customer_id: 1,
   postage: '800',
   total_price: '3000',
   name: '高木マカダミア',
