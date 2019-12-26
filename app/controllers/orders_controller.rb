@@ -1,6 +1,9 @@
 class OrdersController < ApplicationController
   def index
     @orders = OrderItem.where(customer_id: current_customer)
+    @orders.each do |order|
+      @order = order
+    end
   end
 
   def show
@@ -57,17 +60,18 @@ class OrdersController < ApplicationController
         @order.address  = session[:order]["address"]
         @order.save
         session.delete(:order)
-        @order_item = OrderItem.new
+        #order_itemを作成
         @cart = CartItem.where(customer_id: current_customer)
         @cart.each do |cart|
+        @order_item = OrderItem.new
         @order_item.order_id = @order.id
         @order_item.item_id = cart.item_id
         @order_item.customer_id = current_customer.id
         @order_item.number = cart.number
         @order_item.price = cart.item.price
-        end
         @order_item.save
-        @cart = nil
+        end
+        CartItem.where(customer_id: current_customer).delete_all
         redirect_to orders_thanks_path
     end
   end
