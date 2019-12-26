@@ -17,7 +17,6 @@
                     </td>
                 </tr>
                  <tr>
-
                     <th>支払い方法</th>
                     <td>
                         <% if @order.クレジットカード? %>
@@ -30,17 +29,7 @@
                  <tr>
                     <th>ステータス</th>
                     <td>
-                        <% if @order.unpaid? %>
-                            <h2>入金待ち</h2>
-                        <% elsif @order.deposited? %>
-                            <h2>入金確認</h2>
-                        <% elsif @order.in_production? %>
-                            <h2>製造中</h2>
-                        <% elsif @order.preparing? %>
-                            <h2>発送準備中</h2>
-                        <% else %>
-                            <h2>発送済み</h2>
-                        <% end %>
+                        <% if @order.order_status_i18n %>
                     </td>
                 </tr>
             </table>
@@ -69,19 +58,47 @@
             <p class = font-weight-bold>注文内容</p>
             <table border= "1">
                  <tr>
-                    <th>商品</th>
-                    <th>単価（税込）</th>
-                    <th>個数</th>
-                    <th>小計</th>
-                </tr>
-              
-                    <tr>
-                        <td><%= @item.name %></td>
-                        <td><%= @item.price %></td>
-                        <td><%= @order_item.number %></td>
-                        <td><%= @order_item.number * @order_item.item.price %></td>
+
+<% @order.order_items.each do |order_item| %>
+
+                        <th>商品</th>
+                        <th>単価（税込）</th>
+                        <th>個数</th>
+                        <th>小計</th>
                     </tr>
+                        <tr>
+                            <td><%= order_item.item.name %></td>
+                            <td><%= order_item.item.price %></td>
+                            <td><%= order_item.number %></td>
+                            <td><%= order_item.number * order_item.item.price %></td>
+                        </tr>
                
+									<%= form_for(order_item, url: admin_order_item_path) do |f| %>
+										<div class="field">
+									  <%= f.hidden_field :test_id, :value => order_item.id %>
+											<span class="job_type_engine">製造ステータス</span><br>
+											<div class="radio-inline">
+												<%= f.radio_button :making_status, :impossible, checked: "checked" %>
+												<%= f.label :着手不可, class: "job_type_label" %>
+											</div>
+											<div class="radio-inline">
+												<%= f.radio_button :making_status, :waiting %>
+												<%= f.label :製造待ち, class: "job_type_label" %>
+											</div>
+											<div class="radio-inline">
+												<%= f.radio_button :making_status, :in_production %>
+												<%= f.label :製造中, class: "job_type_label" %>
+											</div>
+											<div class="radio-inline">
+												<%= f.radio_button :making_status, :finish %>
+												<%= f.label :製造完了, class: "job_type_label" %>
+											</div>
+										</div>                    
+										<%= f.submit('製造ステータスを更新',class: 'btn btn-primary btn-lg my-1 mb-5 px-5') %>
+									<% end %>
+
+<% end %>
+
             </table>
         </div>
     </div>
@@ -115,27 +132,4 @@
 		</div>
 	</div>                    
 	<%= f.submit('注文ステータスを更新',class: 'btn btn-primary btn-lg my-1 mb-5 px-5') %>
-<% end %>
-
-<%= form_for(@order_item, url: admin_order_path) do |f| %>
-	<div class="field">
-		<span class="job_type_engine">製造ステータス</span><br>
-		<div class="radio-inline">
-			<%= f.radio_button :making_status, :impossible, checked: "checked" %>
-			<%= f.label :着手不可, class: "job_type_label" %>
-		</div>
-		<div class="radio-inline">
-			<%= f.radio_button :making_status, :waiting %>
-			<%= f.label :製造待ち, class: "job_type_label" %>
-		</div>
-		<div class="radio-inline">
-			<%= f.radio_button :making_status, :in_production %>
-			<%= f.label :製造中, class: "job_type_label" %>
-		</div>
-		<div class="radio-inline">
-			<%= f.radio_button :making_status, :finish %>
-			<%= f.label :製造完了, class: "job_type_label" %>
-		</div>
-	</div>                    
-	<%= f.submit('製造ステータスを更新',class: 'btn btn-primary btn-lg my-1 mb-5 px-5') %>
 <% end %>
