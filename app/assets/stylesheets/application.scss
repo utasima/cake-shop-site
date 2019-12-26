@@ -17,8 +17,12 @@
  */
 @import "font-awesome";
 @import "bootstrap";
-@import "home";
+@import "cart_items";
 
+/*共通レイアウト*/
+.container{
+	margin-top: 20px;
+}
 
 .slideshow {
   overflow: hidden;
@@ -43,8 +47,6 @@
 .container{
 	margin-top: 20px;
 }
-
-
 /* 退会ページ */
 .button-unsubscribe {
   margin: 0 auto;

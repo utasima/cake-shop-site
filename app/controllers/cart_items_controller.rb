@@ -2,7 +2,6 @@ class CartItemsController < ApplicationController
   def index
     @user = current_customer
     @number = CartItem.new
-    
   end
 
   def create
@@ -36,4 +35,5 @@ class CartItemsController < ApplicationController
   def cart_item_params
       params.require(:cart_item).permit(:number,:item_id,:customer_id)
   end
+
 end

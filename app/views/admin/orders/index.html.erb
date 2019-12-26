@@ -1,0 +1,49 @@
+<h1>注文履歴一覧</h1>
+
+  <h2>購入者</h2>
+  <%= @order.name %>
+  <%= @order.name %>
+  <h2>購入日</h2>
+  <%= @order.created_at.strftime('%Y/%m/%d') %>
+  <h2>配送先</h2>
+  <%= @order.address %>
+  <h2>支払い金額</h2>
+  <%= @order.total_price%>
+
+  <h2>注文商品</h2>
+    <h2>商品名</h2>
+    <%= @order.item.name %>
+    <h2>個数</h2>
+    <%= @order.item.number %>
+    <h2>製造ステータス</h2>
+    <% if @order.order_status.deposited? %>
+      <h2>製造待ち</h2>
+    <% elsif order_item.making_status.impossible? %>
+        <h2>着手不可</h2>
+    <% elsif order_item.making_status.waiting? %>
+        <h2>製造待ち</h2>
+    <% elsif order_item.making_status.in_production? %>
+        <h2>製造中</h2>
+    <% else %>
+        <h2>製造完了</h2>
+    <% end %>
+
+  <h2>ステータス</h2>
+  <% if @order.making_status.finish? || order.order.order_status.preparing? %>
+    <h2>発送準備中</h2>
+  <% elsif order.making_status.in_production? || order.order.order_status.in_production? %>
+    <h2>製造中</h2>
+  <% elsif order.order.order_status.unpaid? %>
+      <h2>入金待ち</h2>
+  <% elsif order.order.order_status.deposited? %>
+      <h2>入金確認</h2>
+  <% elsif order.order.order_status.in_production? %>
+      <h2>製造中</h2>
+  <% elsif order.order.order_status.preparing? %>
+      <h2>発送準備中</h2>
+  <% else %>
+      <h2>発送済み</h2>
+  <% end %>
+
+  <h2>注文詳細</h2>
+  <%= link_to '表示する', admin_order_path(@order), class: 'btn btn-primary btn-lg my-1 mb-5 px-5' %>
