@@ -15,7 +15,7 @@
                     	<% total = 0 %>
                     	<% @carts.each do |cart| %>
 	                    	<tr>
-	                    		<td><%= cart.name %></td>
+	                    		<td><%= cart.item.name %></td>
 	                    		<td><%= cart.item.price %></td>
 	                    		<td><%= cart.number %></td>
 	                    		<td> </td>
@@ -65,7 +65,7 @@
                     </tbody>
             </table>
 
-            <%= link_to '購入を確定する',orders_path,  total_price: total+800, customer_id:current_customer, order_status:@order_status, class: 'btn btn-info px-3 pull-right', method: :post%>
+            <%= link_to '購入を確定する',orders_path(total_price: total+800, customer_id:current_customer.id), class: 'btn btn-info px-3 pull-right', method: :post%>
             </div>
 
 		</div>

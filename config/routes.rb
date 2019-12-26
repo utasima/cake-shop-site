@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
   get 'orders/confirmation' => "orders#confirmation"
   get 'orders/thanks' => "orders#thanks"
-	
+	delete 'cart_items/all_destroy' => "cart_items#all_destroy"
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
