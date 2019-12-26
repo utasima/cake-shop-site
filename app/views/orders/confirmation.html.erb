@@ -15,13 +15,15 @@
                     	<% total = 0 %>
                     	<% @carts.each do |cart| %>
 	                    	<tr>
-	                    		<td><%=cart.item.image_id %>
-                                    <%= cart.name %></td>
+
+	                    		<td><%= attachment_image_tag cart.item, :image, :fill, 70, 70, format: 'jpeg' %>
+                                    <%= cart.item.name %></td>
+
 	                    		<td><%= cart.item.price %></td>
 	                    		<td><%= cart.number %></td>
-	                    		<td> </td>
+                                <% total += cart.item.price * cart.number %>
+                                <td><%= total %></td>
 	                    	</tr>
-	                    	<% total += cart.item.price * cart.number %>
                     	<% end %>
                     </tbody>
                 </table>
@@ -66,7 +68,7 @@
                     </tbody>
             </table>
 
-            <%= link_to '購入を確定する',orders_path,  total_price: total+800, customer_id:current_customer, order_status:@order_status, class: 'btn btn-info px-3 pull-right', method: :post%>
+            <%= link_to '購入を確定する',orders_path(total_price: total+800, customer_id:current_customer.id), class: 'btn btn-info px-3 pull-right', method: :post%>
             </div>
 
 		</div>

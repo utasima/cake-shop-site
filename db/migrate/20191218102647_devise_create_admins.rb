@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AddDeviseToAdmins < ActiveRecord::Migration[5.2]
+class DeviseCreateAdmins < ActiveRecord::Migration[5.2]
   def change
     create_table :admins do |t|
       ## Database authenticatable
@@ -33,8 +33,7 @@ class AddDeviseToAdmins < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
 
-      # Uncomment below if timestamps were not included in your original model.
-      # t.timestamps null: false
+      t.timestamps null: false
     end
 
     add_index :admins, :email,                unique: true
@@ -42,5 +41,4 @@ class AddDeviseToAdmins < ActiveRecord::Migration[5.2]
     # add_index :admins, :confirmation_token,   unique: true
     # add_index :admins, :unlock_token,         unique: true
   end
-
 end
