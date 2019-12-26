@@ -3,24 +3,23 @@
 <% @orders.each do |order| %>
 
   <h2>注文日</h2>
-  <%= order.order.created_at %>
+  <%= order.created_at %>
 
   <h2>配送先</h2>
   <%= order.order.address %>
 
     <h2>注文商品</h2>
-    <%= order.name%>
+    <%= order.item.name%>
 
   <h2>支払い金額</h2>
   <%= order.order.total_price%>
 
   <h2>ステータス</h2>
-  <% if order.making_status.finish? || order.order.order_status.preparing? %>
+  <% if order.making_status{finish} || order.order.order_status{preparing}%>
     <h2>発送準備中</h2>
 
   <% elsif order.making_status.in_production? || order.order.order_status.in_production? %>
     <h2>製造中</h2>
-
 
   <% elsif order.order.order_status.unpaid? %>
       <h2>入金待ち</h2>

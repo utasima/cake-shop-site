@@ -14,8 +14,8 @@ class OrdersController < ApplicationController
   end
 
   def confirmation
-    # @cart = CartItem.where(customer_id: current_customwer)
-    @carts = current_customer.cart_items
+    @carts = CartItem.where(customer_id: current_customer)
+    
   end
 
   def  thanks
@@ -44,15 +44,31 @@ class OrdersController < ApplicationController
       end
       session[:order] = @order
       redirect_to orders_confirmation_path
-      else
+    else
         @order = Order.new(
         postage: 800,
         total_price: params[:total_price],
-        order_status: params[:order_status],
+        order_status: 0,
         customer_id: params[:customer_id]
         )
+        @order.payment = session[:order]["payment"]
+        @order.name = session[:order]["name"]
+        @order.order_postal_code = session[:order]["order_postal_code"]
+        @order.address  = session[:order]["address"]
         @order.save
-        session[:order] =  nil
+        session.delete(:order)
+        #order_itemを作成
+        @cart = CartItem.where(customer_id: current_customer)
+        @cart.each do |cart|
+        @order_item = OrderItem.new
+        @order_item.order_id = @order.id
+        @order_item.item_id = cart.item_id
+        @order_item.customer_id = current_customer.id
+        @order_item.number = cart.number
+        @order_item.price = cart.item.price
+        @order_item.save
+        end
+        CartItem.where(customer_id: current_customer).delete_all
         redirect_to orders_thanks_path
     end
   end
@@ -61,4 +77,10 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:name,:address,:order_postal_code,:payment)
   end
+
+    def order_item_params
+    params.require(:order_item).permit(:item_id,:order_id,:customer_id,:number,:price)
+end
+
+  
 end
