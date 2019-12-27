@@ -1,38 +1,39 @@
 <h1>注文履歴一覧</h1>
+ 
+<% @orders.each do |order| %>
 
   <h2>注文日</h2>
-  <%= @order.created_at.strftime('%Y/%m/%d') %>
+  <%= order.created_at.strftime('%Y/%m/%d') %>
 
   <h2>配送先</h2>
-  <%= @order.order.address %>
+  <%= order.order.address %>
 
     <h2>注文商品</h2>
-    <%= @order.item.name%>
+    <%= order.item.name%>
 
   <h2>支払い金額</h2>
-  <%= @order.order.total_price%>
+  <%= order.order.total_price%>
 
   <h2>ステータス</h2>
 
-  <% if order.making_status.finish? || order.order.order_status{preparing}%>
-    <h2>発送準備中</h2>
+  <% if order.finish? || order.order.preparing?%>
 
-  <% if @order.finish? || @order.order.preparing?%>
     <h2>発送準備中</h2>
-  <% elsif @order.in_production? || @order.order.in_production? %>
+  <% elsif order.in_production? || order.order.in_production? %>
     <h2>製造中</h2>
-  <% elsif @order.order.unpaid? %>
+  <% elsif order.order.unpaid? %>
       <h2>入金待ち</h2>
-  <% elsif @order.order.deposited? %>
+  <% elsif order.order.deposited? %>
       <h2>入金確認</h2>
-  <% elsif @order.order.in_production? %>
+  <% elsif order.order.in_production? %>
       <h2>製造中</h2>
-  <% elsif @order.order.preparing? %>
+  <% elsif order.order.preparing? %>
       <h2>発送準備中</h2>
   <% else %>
       <h2>発送済み</h2>
   <% end %>
-  <% end %>
 
   <h2>注文詳細</h2>
-  <%= link_to '表示する', order_path(@order), class: 'btn btn-primary btn-lg my-1 mb-5 px-5' %>
+  <%= link_to '表示する', order_path(order), class: 'btn btn-primary btn-lg my-1 mb-5 px-5' %>
+
+<% end %>
