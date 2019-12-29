@@ -1,54 +1,74 @@
-<h1>注文履歴一覧</h1>
-<% @orders.each do |order| %>
-  <h2>購入者</h2>
-  <%= order.customer.last_name %>
-  <%= order.customer.first_name %>
-  <h2>購入日</h2>
-  <%= order.created_at.strftime('%Y/%m/%d') %>
-  <h2>配送先</h2>
-  <%= order.address %>
-  <h2>支払い金額</h2>
-  <%= order.total_price%>
 
-    <% order.order_items.each do |order_item| %>
+<div class="container">
+        <div class="row">
+            <div class= "col-md-12 mt-5 mb-5">
+              <h4>注文履歴一覧</h4>
+              <% @orders.each do |order| %>
+              <table class="table table-bordered mt-5">
+                    <thead>
+                        <tr>
+                            <th class="table-secondary">購入者</th>
+                            <th class="table-secondary">購入日</th>
+                            <th class="table-secondary">配送先</th>
+                            <th class="table-secondary">支払い金額</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td style="width: 20%"><%= order.customer.last_name %>
+                              <%= order.customer.first_name %></td>
+                          <td style="width: 15%"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+                          <td style="width: 50%"><%= order.address %></td>
+                          <td style="width: 15%"><%= order.total_price %></td>
+                        </tr>
+                  </tbody>
+            </table>
+            <% order.order_items.each do |order_item| %>
+            <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="table-secondary">商品名</th>
+                            <th class="table-secondary">個数</th>
+                            <th class="table-secondary">製造ステータス</th>
+                            <th class="table-secondary">注文ステータス</th>
+                            <th class="table-secondary">注文詳細</th>
+                        </tr>
+                    </thead>
 
-      <h2>注文商品</h2>
-      <h2>商品名</h2>
-      <%= order_item.item.name %>
-      <h2>個数</h2>
-      <%= order_item.number %>
-      <h2>製造ステータス</h2>
-
-      <% if order_item.impossible? %>
-        <h2>着手不可</h2>
-      <% elsif order_item.waiting? %>
-          <h2>製造待ち</h2>
-      <% elsif order_item.in_production? %>
-          <h2>製造中</h2>
-      <% else %>
-          <h2>製造完了</h2>
-      <% end %>
-
-      <h2>ステータス</h2>
-      <% if order_item.finish? || order.preparing? %>
-        <h2>発送準備中</h2>
-      <% elsif order_item.in_production? || order.in_production? %>
-        <h2>製造中</h2>
-      <% elsif order.unpaid? %>
-          <h2>入金待ち</h2>
-      <% elsif order.deposited? %>
-          <h2>入金確認</h2>
-      <% elsif order.in_production? %>
-          <h2>製造中</h2>
-      <% elsif order.preparing? %>
-          <h2>発送準備中</h2>
-      <% else %>
-          <h2>発送済み</h2>
-      <% end %>
-
-    <% end %>
-
-  <h2>注文詳細</h2>
-  <%= link_to '表示する', admin_order_path(order), class: 'btn btn-primary btn-lg my-1 mb-5 px-5' %>
-
-<% end %>
+                    <tbody>
+                        <tr>
+                          <td style="width: 20%"><%= order_item.item.name %></td>
+                          <td style="width: 15%"><%= order_item.number %></td>
+                          <td style="width: 25%"><% if order_item.impossible? %>
+                                <p>着手不可</p>
+                              <% elsif order_item.waiting? %>
+                                  <p>製造待ち</p>
+                              <% elsif order_item.in_production? %>
+                                  <p>製造中</p>
+                              <% else %>
+                                  <p>製造完了</p>
+                              <% end %></td>
+                          <td style="width: 25%"><% if order_item.finish? || order.preparing? %>
+                              <p>発送準備中</p>
+                            <% elsif order_item.in_production? || order.in_production? %>
+                              <p>製造中</p>
+                            <% elsif order.unpaid? %>
+                                <p>入金待ち</p>
+                            <% elsif order.deposited? %>
+                                <p>入金確認</p>
+                            <% elsif order.in_production? %>
+                                <p>製造中</p>
+                            <% elsif order.preparing? %>
+                                <p>発送準備中</p>
+                            <% else %>
+                                <p>発送済み</p>
+                            <% end %></td>
+                             <% end %>
+                          <td style="width: 15%"><%= link_to '表示する', admin_order_path(order), class: 'btn btn-info px-4' %></td>
+                        </tr>
+                  </tbody>
+            </table>
+            <% end %>
+          </div>
+      </div>
+</div>
