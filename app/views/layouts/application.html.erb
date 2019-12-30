@@ -27,9 +27,9 @@
             " %></li>
           <% elsif admin_signed_in? %>
             <li class="nav_item h3"><%=link_to "Genre","#", class:"nav-item nav-link glyphicon glyphicon-user",alt:"会員一覧" %></li>
-            <li class="nav_item h3"><%=link_to fa_icon("users 1x"),"#", class:"nav-item nav-link" %></li>
-            <li class="nav_item h3"><%=link_to "Orders","#", class:"nav-item nav-link" %></li>
-            <li class="nav_item h3"><%=link_to "Items","#", class:"nav-item nav-link" %></li>
+            <li class="nav_item h3"><%=link_to fa_icon("users 1x"),admin_index_path, class:"nav-item nav-link" %></li>
+            <li class="nav_item h3"><%=link_to "Orders",admin_orders_path, class:"nav-item nav-link" %></li>
+            <li class="nav_item h3"><%=link_to "Items",admin_items_path, class:"nav-item nav-link" %></li>
              <li class="nav_item"><%= link_to fa_icon("sign-out 2x"),  destroy_admin_session_path, method: :delete, class:"nav-item nav-link", alt:"ログアウト
             " %></li>
           <% else %>

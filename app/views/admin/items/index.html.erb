@@ -1,15 +1,28 @@
-<div class="container pt-3"><h1>商品一覧</h1></div> 
-
-<% @items.each do |item| %>
-    <div class="container">
-      <%= link_to attachment_image_tag(@item, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg"), admin_item_path(item) %>
-    </div>
-    <%= item.name %>
-    <%= item.description %>
-    <%= item.price %>
-<% end %>
-
-
-<%= link_to new_admin_item_path(@item) do %>
-<div class="btn btn-outline-primary">Create CAKE</div>
-<% end %>
+<div class="container">
+	<div class = "row">
+		<div class = "col-md-12">
+			<h2 class = "mt-5 mb-5">商品一覧</h2>
+				<% @items.each do |item| %>
+				<div class="float-left mr-3 mb-4">
+					<div class ="card" style="width: 350px">
+						<div class = "card-img-top pl-5 pt-4">
+							<%= link_to attachment_image_tag(item, :image, :fill, 250, 200, format: 'jpg', fallback: "no_image.jpg"), admin_item_path(item) %></div>
+						<div class= "card-body">
+							<div class = "card-title h5">
+							<%= item.name %></div>
+							<div class = "card-text">
+							<%= item.description %></div>
+							<div class = "card-text">
+							<%= item.price %></div>
+						</div>
+					</div>
+				</div>
+				<% end %>
+		</div>
+		<div class = "col-md-12">
+			<%= link_to new_admin_item_path(@item) do %>
+			<div class="btn btn-info btn-lg btn-block mt-5 mb-5 ">Create CAKE</div>
+			<% end %>
+		</div>
+	</div>
+</div>
