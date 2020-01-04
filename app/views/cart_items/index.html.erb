@@ -38,7 +38,7 @@
               <% end %></td>
 
               <td><%= i += cart.item.price * cart.number %>円</td>
-          
+
               <td><%= link_to cart_item_path(cart.id), method: :delete do %>
               <div class="btn btn-danger">削除する</div>
               <% end %></td>

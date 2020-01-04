@@ -15,13 +15,14 @@
                     	<% total = 0 %>
                     	<% @carts.each do |cart| %>
 	                    	<tr>
-                                <td><%= attachment_image_tag(cart.item, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg") %></td>
-	                    		<td><%= cart.item.name %></td>
+	                    		<td><%= attachment_image_tag cart.item, :image, :fill, 70, 70, format: 'jpeg' %>
+                                    <%= cart.item.name %></td>
+
 	                    		<td><%= cart.item.price %></td>
 	                    		<td><%= cart.number %></td>
-	                    		<td> </td>
+                                <% total += cart.item.price * cart.number %>
+                                <td><%= total %></td>
 	                    	</tr>
-	                    	<% total += cart.item.price * cart.number %>
                     	<% end %>
                     </tbody>
                 </table>
@@ -48,7 +49,7 @@
                 </table>
             </div>
 
-            <div class= "col-md-9">
+            <div class= "col-md-9 mt-5">
             <table class="table">
 
                     <tbody>
