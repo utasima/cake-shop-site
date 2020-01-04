@@ -23,7 +23,6 @@
                         </tr>
                   </tbody>
             </table>
-            <% order.order_items.each do |order_item| %>
             <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -34,7 +33,7 @@
                             <th class="table-secondary">注文詳細</th>
                         </tr>
                     </thead>
-
+                  <% order.order_items.each do |order_item| %>
                     <tbody>
                         <tr>
                           <td style="width: 20%"><%= order_item.item.name %></td>

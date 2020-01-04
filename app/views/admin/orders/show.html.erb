@@ -65,64 +65,62 @@
 							<td><%= order_item.number * order_item.item.price %></td>
 					</tr>
 				</table>
-			</div>
-			<div class = "col-md-9 mt-3">
-			<table  class="table table-bordered">
-			<tr>
-				<td><%= form_for(order_item, url: admin_order_item_path) do |f| %>
-					<%= f.hidden_field :test_id, :value => order_item.id %>
-					<div class="field pl-5">
-						<span class="job_type_engine h4">製造ステータス</span><br>
-						<div class="radio-inline mt-3">
-							<%= f.radio_button :making_status, :impossible, checked: "checked" %>
-							<%= f.label :着手不可, class: "job_type_label" %>
-						</div>
-						<div class="radio-inline">
-							<%= f.radio_button :making_status, :waiting %>
-							<%= f.label :製造待ち, class: "job_type_label" %>
-						</div>
-						<div class="radio-inline">
-							<%= f.radio_button :making_status, :in_production %>
-							<%= f.label :製造中, class: "job_type_label" %>
-						</div>
-						<div class="radio-inline mb-3">
-							<%= f.radio_button :making_status, :finish %>
-							<%= f.label :製造完了, class: "job_type_label" %>
-						</div>
-					</div>
-					<%= f.submit('製造ステータスを更新',class: 'btn btn-info px-5 mb-5 ml-5') %>
-					<% end %>
-					<% end %>
-				</td>
-				<td><%= form_for(@order, url: admin_order_path) do |f| %>
-					<div class="field pl-5">
-						<span class="job_type_engine h4">注文ステータス</span><br>
+				<table  class="table table-bordered mt-4 mb-5">
+					<tr>
+						<td><%= form_for(order_item, url: admin_order_item_path) do |f| %>
+							<%= f.hidden_field :test_id, :value => order_item.id %>
+							<div class="field pl-5">
+								<span class="job_type_engine h4">製造ステータス</span><br>
+								<div class="radio-inline mt-3">
+									<%= f.radio_button :making_status, :impossible, checked: "checked" %>
+									<%= f.label :着手不可, class: "job_type_label" %>
+								</div>
+								<div class="radio-inline">
+									<%= f.radio_button :making_status, :waiting %>
+									<%= f.label :製造待ち, class: "job_type_label" %>
+								</div>
+								<div class="radio-inline">
+									<%= f.radio_button :making_status, :in_production %>
+									<%= f.label :製造中, class: "job_type_label" %>
+								</div>
+								<div class="radio-inline mb-3">
+									<%= f.radio_button :making_status, :finish %>
+									<%= f.label :製造完了, class: "job_type_label" %>
+								</div>
+							</div>
+							<%= f.submit('製造ステータスを更新',class: 'btn btn-info px-5 mb-5 ml-5') %>
+							<% end %>
+						</td>
+						<td><%= form_for(@order, url: admin_order_path) do |f| %>
+							<div class="field pl-5">
+								<span class="job_type_engine h4">注文ステータス</span><br>
 
-						<div class="radio-inline">
-							<%= f.radio_button :order_status, :unpaid, checked: "checked" %>
-							<%= f.label :入金待ち, class: "job_type_label" %>
-						</div>
-						<div class="radio-inline">
-							<%= f.radio_button :order_status, :deposited %>
-							<%= f.label :入金確認, class: "job_type_label" %>
-						</div>
-						<div class="radio-inline">
-							<%= f.radio_button :order_status, :in_production %>
-							<%= f.label :製造中, class: "job_type_label" %>
-						</div>
-						<div class="radio-inline">
-							<%= f.radio_button :order_status, :preparing %>
-							<%= f.label :発送準備中, class: "job_type_label" %>
-						</div>
-						<div class="radio-inline">
-							<%= f.radio_button :order_status, :sent %>
-							<%= f.label :発送済み, class: "job_type_label" %>
-						</div>
-					</div>
-					<%= f.submit('注文ステータスを更新',class: 'btn btn-info px-5 mb-5 ml-5') %>
-				<% end %>
-				</td>
-			</tr>
-		</table>
+								<div class="radio-inline">
+									<%= f.radio_button :order_status, :unpaid, checked: "checked" %>
+									<%= f.label :入金待ち, class: "job_type_label" %>
+								</div>
+								<div class="radio-inline">
+									<%= f.radio_button :order_status, :deposited %>
+									<%= f.label :入金確認, class: "job_type_label" %>
+								</div>
+								<div class="radio-inline">
+									<%= f.radio_button :order_status, :in_production %>
+									<%= f.label :製造中, class: "job_type_label" %>
+								</div>
+								<div class="radio-inline">
+									<%= f.radio_button :order_status, :preparing %>
+									<%= f.label :発送準備中, class: "job_type_label" %>
+								</div>
+								<div class="radio-inline">
+									<%= f.radio_button :order_status, :sent %>
+									<%= f.label :発送済み, class: "job_type_label" %>
+								</div>
+							</div>
+							<%= f.submit('注文ステータスを更新',class: 'btn btn-info px-5 mb-5 ml-5') %>
+						<% end %>
+						</td>
+					</tr>
+				</table>
+			<% end %>
 	</div>
 </div>
