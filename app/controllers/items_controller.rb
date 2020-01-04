@@ -11,6 +11,8 @@ class ItemsController < ApplicationController
   def show
     @cart = CartItem.new
     @number = [*1..100]
+    @customer = Customer.find(current_customer.id)
+    @current_customer_curt_item = CartItem.where(item_id: @item.id)
   end
 
 

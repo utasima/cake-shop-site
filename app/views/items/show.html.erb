@@ -13,14 +13,13 @@
 							<%= @item.description %></div>
 						<div class = "card-text h5">
 							<%= @item.price %></div>
-
-						<%= form_for @cart, url: cart_items_path do |f| %>
-						<%= f.select :number, (1..99)%>
-						<%= f.hidden_field :item_id, :value => @item.id %>
-						<%= f.submit "カートに入れる", class:"btn btn-info btn-lg col-md-11 mt-3 mb-3 " %>
-							<% if customer_signed_in? %>
-								<%= f.hidden_field :customer_id, :value => current_customer.id%>
-							<% end %>
+							<%= form_for @cart, url: cart_items_path do |f| %>
+								<%= f.select :number, (1..99)%>
+								<%= f.hidden_field :item_id, :value => @item.id %>
+								<%= f.submit "カートに入れる", class:"btn btn-info btn-lg col-md-11 mt-3 mb-3 " %>
+								<% if customer_signed_in? %>
+									<%= f.hidden_field :customer_id, :value => current_customer.id%>
+								<% end %>
 						<% end %>
 					</div>
 				</div>
