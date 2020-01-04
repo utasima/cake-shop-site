@@ -9,22 +9,31 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
-	def after_sign_in_path_for(resource)
-		root_path
+	def after_sign_in_path_for(resource_or_scope)
+		if resource_or_scope.is_a?(Admin)
+			admin_items_path
+		else
+			root_path
+			flash[:notice] = "Signed out successfully"
+		end
 	end
 
-	def after_log_in_path_for(resource)
-		root_path
-		flash[:notice] = "Signed out successfully"
+	def after_log_in_path_for(resource_or_scope)
+		if resource_or_scope.is_a?(Admin)
+			admin_items_path
+		else
+			root_path
+			flash[:notice] = "Signed out successfully"
+		end
 	end
 
-	def after_sign_out_path_for(resource)
-		if admin_signed_in?
-    	redirect_to new_admin_session_path
-  	else
-  		new_customer_session_path
-  	end
-	end
+	def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :admin
+    	new_admin_session_path
+    else
+    	new_customer_session_path
+    end
+  end
 
 
 	protected
