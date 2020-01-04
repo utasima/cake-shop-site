@@ -1,3 +1,4 @@
 class Genre < ApplicationRecord  
-  # acts_as_paranoid
+	has_many :items
+  acts_as_paranoid
 end
