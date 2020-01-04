@@ -1,5 +1,9 @@
 class Customers::AdminController < ApplicationController
-	before_action :authenticate_customer!
+	before_action :authenticate_admin!
+
+	def after_sign_out_path_for(resource)
+    redirect_to new_admin_session_path
+  end
 
 	def index
 		@customers = Customer.with_deleted.page(params[:page]).reverse_order
@@ -22,7 +26,7 @@ class Customers::AdminController < ApplicationController
 	def destroy
 		customer = Customer.with_deleted.find(params[:id])
 		customer.destroy
-		redirect_to admin_index_path
+		redirect_to new_admin_session_path
 	end
 
 	def active

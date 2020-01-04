@@ -1,7 +1,4 @@
 class CartItemsController < ApplicationController
-
-  before_action :authenticate_customer!
-
   def index
     @cart = CartItem.where(customer_id: current_customer.id)
     @number = CartItem.new
@@ -30,7 +27,7 @@ class CartItemsController < ApplicationController
     redirect_to cart_items_path
   end
 
-  def edit 
+  def edit
     @item = Item.find(params[:id])
   end
 

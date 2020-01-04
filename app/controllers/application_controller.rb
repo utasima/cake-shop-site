@@ -19,8 +19,13 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_out_path_for(resource)
-		root_path
+		if admin_signed_in?
+    	redirect_to new_admin_session_path
+  	else
+  		new_customer_session_path
+  	end
 	end
+
 
 	protected
 	def configure_permitted_parameters

@@ -1,7 +1,7 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_item, only: [:show, :edit, :update, :destroy,]
-  # before_action :if_not_admin
+
 
   def index
     @item = Item.new
@@ -17,6 +17,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @genres = Genre.all
   end
 
   def create
