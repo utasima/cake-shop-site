@@ -1,24 +1,7 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# ながのCAKE 
+========
+### ⻑野県にある⼩さな洋菓⼦店「[ながのCAKE](URL)」の商品を通販するためのECサイト
+- Ruby version 2.5.7
+- rails version 5.2.4
+- ### 作者
+　- UTASIMA
