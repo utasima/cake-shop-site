@@ -3,24 +3,30 @@
 		<div class = "col-md-12">
 			<h2 class = "mt-5 mb-5">商品一覧</h2>
 				<% @items.each do |item| %>
-				<div class="float-left mr-3 mb-4">
-					<div class ="card" style="width: 350px">
-						<div class = "card-img-top pl-5 pt-4">
-							<%= link_to attachment_image_tag(item, :image, :fill, 250, 200, format: 'jpg', fallback: "no_image.jpg"), admin_item_path(item) %>
-						</div>
-						<div class= "card-body pl-5">
-							<div class = "card-title h5">
-							<%= item.name %></div>
-							<div class = "card-text">
-							<%= item.description %></div>
-							<div class = "card-text">
-							<%= item.price %></div>
+					<div class="float-left mr-3 mb-4">
+						<div class ="card" style="width: 350px">
+							<div class = "card-img-top pl-5 pt-4">
+								<%= link_to attachment_image_tag(item, :image, :fill, 250, 200, format: 'jpg', fallback: "no_image.jpg"), admin_item_path(item) %>
+							</div>
+							<div class= "card-body pl-5">
+								<div class = "card-title h5">
+								<%= item.name %></div>
+								<div class = "card-text">
+								<%= item.description %></div>
+								<div class = "card-text">
+								<%= item.price %></div>
+							</div>
 						</div>
 					</div>
-				</div>
+					<% if item.paranoia_destroyed? %>
+						<td align=“center”>売り切れ</td>
+						<td><%= link_to '販売中に戻す', regeneration_admin_item_path(item), method: :patch, class: 'btn btn-primary btn-lg my-1 mb-5 px-5' %></td>
+					<% else %>
+						<td align=“center”>販売中</td>
+					<% end %>
 				<% end %>
 		</div>
-		<div class = "col-md-12">
+		<div class = "col-md-12">		
 			<%= link_to new_admin_item_path(@item) do %>
 			<div class="btn btn-info btn-lg btn-block mt-5 mb-5 ">Create CAKE</div>
 			<% end %>

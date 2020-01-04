@@ -1,14 +1,9 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_item, only: [:show, :edit, :update, :destroy,]
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 60c8c061b52abb28a1ff8abaa992e2f7431fca95
   def index
     @item = Item.new
-    @items = Item.all
+    @items = Item.with_deleted
   end
 
   def edit
@@ -20,12 +15,10 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @genres = Genre.all
   end
 
   def create
     @item = Item.new(item_params)
-    @item.deleted_at = true
     if @item.save
       redirect_to admin_item_path(@item)
     else
@@ -45,6 +38,12 @@ class Admin::ItemsController < ApplicationController
 
   def destroy
     @item.destroy
+    redirect_to admin_items_path
+  end
+
+  def regeneration
+    @item = Item.with_deleted.find(params[:id])
+    @item.restore
     redirect_to admin_items_path
   end
 
