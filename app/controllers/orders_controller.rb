@@ -1,7 +1,5 @@
 class OrdersController < ApplicationController
-
   before_action :authenticate_customer!
-
   def index
     @orders = Order.where(customer_id: current_customer)
   end
@@ -80,10 +78,7 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:name,:address,:order_postal_code,:payment)
   end
-
-    def order_item_params
+  def order_item_params
     params.require(:order_item).permit(:item_id,:order_id,:customer_id,:number,:price)
-end
-
-  
+  end
 end
