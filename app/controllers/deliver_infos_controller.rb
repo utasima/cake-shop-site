@@ -1,4 +1,7 @@
 class DeliverInfosController < ApplicationController
+
+  before_action :authenticate_customer!
+
   before_action :set_deliver_info, only: [:edit, :destroy, :update]
 
   def index
