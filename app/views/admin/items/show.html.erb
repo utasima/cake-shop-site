@@ -1,10 +1,27 @@
-<%= @item.name %>
-<%= link_to attachment_image_tag(@item, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg") %>
-<%= @item.price %>
-<%= @item.description %>
-<%= form_for @cart, url: cart_items_path do |f| %>
-<%= f.select :number, (1..99) %>
-<%= f.hidden_field :item_id, :value => @item.id %>
+<div class="container">
+	<div class = "row">
+		<div class = "col-md-12">
+			<h2 class = "mt-4 mb-3">商品詳細</h2>
+				<div class ="card mb-5" style="width: 450px">
+					<div class = "card-img-top pl-5 pt-4">
+						<%= attachment_image_tag @item, :image, :fill, 350, 300, format: 'jpg', fallback: "no_image.jpg" %>
+					</div>
+					<div class= "card-body pl-5">
+						<div class = "card-title h4">
+							<%= @item.name %></div>
+						<div class = "card-text h5">
+							<%= @item.description %></div>
+						<div class = "card-text h5">
+							<%= @item.price %></div>
 
-<%= f.submit "カートに入れる", class:"btn btn-primary" %>
-<% end %>
+						<%= link_to edit_admin_item_path(@item) do %>
+						<div class="btn btn-info btn-lg col-md-11 mt-3 mb-3 ">編集する</div>
+						<% end %>
+						<%= link_to admin_item_path(@item), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+						<div class="btn btn-danger btn-lg col-md-11 mt-3 mb-3">削除する</div>
+						<% end %>
+					</div>
+	    		</div>
+	  	</div>
+	</div>
+</div>

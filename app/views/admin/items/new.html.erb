@@ -1,30 +1,20 @@
 <div class="container-fluid">
   <div class="row">
-
-
-<div class="col-2 offset-md-3">
-
-<%= form_for @item ,url: admin_items_path do |f| %>
-  
-  <p id="notice"><%= notice %></p>
-  
-  <div class="form-group">
-  <%= f.label :商品名 %>
-  <%= f.text_field :name, class:"form-control" %>
-  <%= f.label :値段 %>
-  <%= f.number_field :price, class:"form-control" %>
-  <%= f.label :説明文 %>
-  <%= f.text_area :description, class:"form-control" %>
-  <%= f.label :画像ファイル %>
-  <%= f.attachment_field :image %>
-  <%= f.submit "商品登録" %>
+    <div class="col-md-4 offset-md-4 mt-5">
+      <%= form_for @item ,url: admin_items_path do |f| %>
+        <p id="notice"><%= notice %></p>
+        <div class="form-group">
+          <%= f.label :商品名 %>
+          <%= f.text_field :name, class:"form-control" %>
+          <%= f.label :値段 %>
+          <%= f.number_field :price, class:"form-control" %>
+          <%= f.label :説明文 %>
+          <%= f.text_area :description, class:"form-control" %>
+          <%= f.label :画像ファイル, class:"mt-4" %>
+          <%= f.attachment_field :image %>
+          <%= f.submit "商品登録",class: 'btn btn-info btn-block mt-5 mb-5' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  
-<% end %>
-
-  </div>
-
-
- </div>
 </div>
