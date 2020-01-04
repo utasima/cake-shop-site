@@ -16,7 +16,12 @@
           <div class="float-left mr-3 mb-4">
             <div class ="card" style="width: 350px">
               <div class = "card-img-top pl-5 pt-4">
-              <%= link_to attachment_image_tag(item, :image, :fill, 250, 200, format: 'jpg', fallback: "no_image.jpg"), item_path(item) %></div>
+                <% if admin_signed_in? %>
+                  <%= link_to attachment_image_tag(item, :image, :fill, 250, 200, format: 'jpg', fallback: "no_image.jpg"), admin_item_path(item) %>
+                <% else %>
+                  <%= link_to attachment_image_tag(item, :image, :fill, 250, 200, format: 'jpg', fallback: "no_image.jpg"), item_path(item) %>
+                <% end %>
+              </div>
               <div class= "card-body pl-5">
                   <div class = "card-title h5">
                     <%= item.name %></div>

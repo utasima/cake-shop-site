@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except: [:show, :index]
 
   before_action :set_item, only: [:show, :cancel]
 
