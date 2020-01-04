@@ -5,7 +5,6 @@
       <%= link_to attachment_image_tag(item, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg"), item_path(item) %>
     </div>
     <%= item.name %>
-    <%= item.description %>
     <%= item.price %>
 <% end %>
 

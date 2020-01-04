@@ -1,6 +1,11 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_item, only: [:show, :edit, :update, :destroy,]
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 60c8c061b52abb28a1ff8abaa992e2f7431fca95
   def index
     @item = Item.new
     @items = Item.all
@@ -15,6 +20,7 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @genres = Genre.all
   end
 
   def create
