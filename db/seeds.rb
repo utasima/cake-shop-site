@@ -7,13 +7,34 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-Item.create(
-  name: "商品1",
-  description: "テスト,テスト,テスト",
-  price: 700
-)
-# DeliverInfo.create(
-#   name: "商品1",
-#   address: "テスト,テスト,テスト",
-#   price: "700円"
+
+# Customer.create(
+#   email: "test@test.com", password: "password"
+# )
+
+
+
+# Item.create!(
+#   genre_id: 1,
+#   name: 'ショートサンタケーキ',
+#   description: 'テスト,テスト,テスト',
+#   price: '70000',
+#   deleted_at: 'true'
+# )
+
+# DeliverInfo.create!(
+#   customer_id: 1,
+#   name: 'ショートショコラ',
+#   address: 'テストテストテスト東京',
+#   postal_code: '2233455'
+
+# )
+
+# Order.create!(
+#   customer_id: 1,
+#   postage: '800',
+#   total_price: '3000',
+#   name: '高木マカダミア',
+#   order_postal_code: '244-4444',
+#   address: '鎌倉県群馬区中央'
 # )

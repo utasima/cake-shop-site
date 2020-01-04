@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+
+  before_action :authenticate_customer!
+
   def index
     @orders = OrderItem.where(customer_id: current_customer)
   end
@@ -15,7 +18,7 @@ class OrdersController < ApplicationController
 
   def confirmation
     @carts = CartItem.where(customer_id: current_customer)
-    
+
   end
 
   def  thanks

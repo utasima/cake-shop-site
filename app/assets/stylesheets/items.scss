@@ -1,3 +1,19 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.genre{
+  border: 1px solid lightgray;
+  padding: 5px;
+  height: 300px;
+}
+.genre h3{
+  border-bottom: 1px solid lightgray;
+  text-align: center;
+}
+.genre p {
+  font-size: 20px;
+}
+.item-box{
+  font-weight: bold;
+}

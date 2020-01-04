@@ -1,14 +1,16 @@
 class Admin::OrdersController < ApplicationController
+  before_action :authenticate_admin!
   def index
-    @orders = OrderItem.all
+    @orders = Order.all
   end
 
   def show
     @order = Order.find(params[:id])
-    
+    @customer = @order.customer
   end
 
   def new
+    @order = Order.new
   end
 
   def confirmation
@@ -23,9 +25,8 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    if
-      @order.update(order_params)
-      redirect_to admind_orders_path(@order), notice: '更新しました。'
+    if @order.update(order_params)
+      redirect_to admin_orders_path(@order), notice: '更新しました。'
     else
       render action: :show
     end
@@ -36,7 +37,6 @@ class Admin::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:name,:address,:order_postal_code,:payment,:making_status)
+    params.require(:order).permit(:name,:address,:order_postal_code,:payment,:order_status)
   end
-
 end
