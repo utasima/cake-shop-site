@@ -4,8 +4,8 @@ class Item < ApplicationRecord
   validates :price , presence: true
   attachment :image
 
-  has_many :order_items 
+  has_many :order_items
   has_many :cart_items
-  # belongs_to :genre
 
+  belongs_to :genre, optional: true
 end

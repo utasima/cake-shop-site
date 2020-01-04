@@ -3,7 +3,7 @@ class CartItemsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    @user = current_customer
+    @cart = CartItem.where(customer_id: current_customer.id)
     @number = CartItem.new
   end
 

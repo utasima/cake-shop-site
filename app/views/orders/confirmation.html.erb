@@ -20,8 +20,8 @@
 
 	                    		<td><%= cart.item.price %></td>
 	                    		<td><%= cart.number %></td>
-                                <% total += cart.item.price * cart.number %>
-                                <td><%= total %></td>
+                          <td><%= cart.item.price * cart.number %></td>
+                          <% total += cart.item.price * cart.number %>
 	                    	</tr>
                     	<% end %>
                     </tbody>

@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
 
   def confirmation
     @carts = CartItem.where(customer_id: current_customer)
-    
+
   end
 
   def  thanks

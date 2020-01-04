@@ -4,7 +4,7 @@
 			<h2 class = "mt-4 mb-3">商品詳細</h2>
 				<div class ="card mb-5" style="width: 450px">
 					<div class = "card-img-top pl-5 pt-4">
-						<%= link_to attachment_image_tag(@item, :image, :fill, 350, 300, format: 'jpg', fallback: "no_image.jpg") %>
+						<%= attachment_image_tag @item, :image, :fill, 350, 300, format: 'jpg', fallback: "no_image.jpg" %>
 					</div>
 					<div class= "card-body pl-5">
 						<div class = "card-title h4">
@@ -16,6 +16,9 @@
 
 						<%= link_to edit_admin_item_path(@item) do %>
 						<div class="btn btn-info btn-lg col-md-11 mt-3 mb-3 ">編集する</div>
+						<% end %>
+						<%= link_to admin_item_path(@item), method: :delete, "data-confirm" => "本当に削除しますか？" do %>
+						<div class="btn btn-danger btn-lg col-md-11 mt-3 mb-3">削除する</div>
 						<% end %>
 					</div>
 	    		</div>
