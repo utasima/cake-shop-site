@@ -14,11 +14,12 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
     @cart = CartItem.new
     @number = [*1..100]
     @genre = Genre.where(deleted_at: nil)
-    @customer = Customer.find(current_customer.id)
-    @current_customer_curt_item = CartItem.where(item_id: @item.id)
+
+    @current_customer_cart_item = CartItem.where(item_id: @item.id)
   end
 
   def cancel

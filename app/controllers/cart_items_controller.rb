@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
   def index
-    @cart = CartItem.where(customer_id: current_customer.id)
+    @cart = CartItem.where(customer_id: current_customer)
     @number = CartItem.new
   end
 
