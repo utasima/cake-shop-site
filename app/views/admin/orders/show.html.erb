@@ -91,6 +91,7 @@
 							<%= f.submit('製造ステータスを更新',class: 'btn btn-info px-5 mb-5 ml-5') %>
 							<% end %>
 						</td>
+						<% end %>
 						<td><%= form_for(@order, url: admin_order_path) do |f| %>
 							<div class="field pl-5">
 								<span class="job_type_engine h4">注文ステータス</span><br>
@@ -121,6 +122,6 @@
 						</td>
 					</tr>
 				</table>
-			<% end %>
+			
 	</div>
 </div>
