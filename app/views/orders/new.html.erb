@@ -29,7 +29,7 @@
           <label for="address">登録先住所から選択</label>
         </div>
           <div style="margin-left:15px">
-          <%= select_tag(:registered_address,if DeliverInfos.find(customer_id: current_custmer)(customer_id: currentoptions_for_select(@deliver.collect { |p| ["〒" + p.postal_code + p.address + p.name, p.id]}))%>
+          <%= select_tag(:registered_address, options_for_select(@deliver.collect { |p| ["〒" + p.postal_code + p.address + p.name, p.id]}))%>
           </div>
         <div>
           <%= radio_button_tag :address, :新しいお届け先 %>

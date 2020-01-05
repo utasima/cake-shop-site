@@ -18,8 +18,6 @@ class ItemsController < ApplicationController
     @cart = CartItem.new
     @number = [*1..100]
     @genre = Genre.where(deleted_at: nil)
-
-    @current_customer_cart_item = CartItem.where(item_id: @item.id)
   end
 
   def cancel
