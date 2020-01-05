@@ -1,10 +1,10 @@
 
 <div class="container">
 		<div class="row">
-			<div class= "col-md-8">
+			<div class= "col-md-10 mt-5">
 
 					<span class="h4">登録情報編集 </span>
-					<%= link_to "退会する", customer_new_Unsubscribe_path,class: 'btn btn-danger' %>
+					<%= link_to "退会する", customer_new_Unsubscribe_path,class: 'btn btn-danger ml-3 col-md-2' %>
 				  <br><br>
 					<%= form_for(@customer) do |f| %>
 
@@ -12,33 +12,33 @@
 							<tbody>
 								<tr>
 									<th class="table-secondary">氏名</th>
-									<td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
+									<td><%= f.text_field :last_name, class: "col-md-5" %><%= f.text_field :first_name, class: "col-md-5" %></td>
 								</tr>
 								<tr>
 									<th class="table-secondary">カナ</th>
-									<td><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></td>
+									<td><%= f.text_field :last_name_kana, class: "col-md-5" %><%= f.text_field :first_name_kana, class: "col-md-5" %></td>
 								</tr>
 								<tr>
 									<th class="table-secondary">郵便番号</th>
-									<td><%= f.text_field :customers_postal_code %></td>
+									<td><%= f.text_field :customers_postal_code, class: "col-md-5" %></td>
 								</tr>
 								<tr>
 									<th class="table-secondary">住所</th>
-									<td><%= f.text_field :customers_address %></td>
+									<td><%= f.text_field :customers_address, class: "col-md-11" %></td>
 								</tr>
 								<tr>
 									<th class="table-secondary">電話番号</th>
-									<td><%= f.text_field :phone_number %></td>
+									<td><%= f.text_field :phone_number, class: "col-md-5" %></td>
 								</tr>
 								<tr>
 									<th class="table-secondary">メールアドレス</th>
-									<td><%= f.text_field :email %></td>
+									<td><%= f.text_field :email, class: "col-md-5" %></td>
 								</tr>
 							</tbody>
 
 						</table>
 
-						<br><div class="button-edit">
+						<br><div class="button-edit mb-5">
 							<%= f.submit '編集内容を保存する',class: 'btn btn-info btn-lg'%>
 							</div>
 

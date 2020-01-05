@@ -1,8 +1,8 @@
 <div class="container">
         <div class="row">
             <div class= "col-md-9">
-				<h4>注文情報確認</h4>
-				<table class="table table-bordered">
+				<h4 class= "mt-3">注文情報確認</h4>
+				<table class="table table-bordered mt-4">
                     <thead>
                         <tr>
                             <th class="table-secondary">商品名</th>
@@ -15,20 +15,21 @@
                     	<% total = 0 %>
                     	<% @carts.each do |cart| %>
 	                    	<tr>
-                                <td><%= attachment_image_tag(cart.item, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg") %></td>
-	                    		<td><%= cart.item.name %></td>
+	                    		<td><%= attachment_image_tag cart.item, :image, :fill, 70, 70, format: 'jpeg' %>
+                                    <%= cart.item.name %></td>
+
 	                    		<td><%= cart.item.price %></td>
 	                    		<td><%= cart.number %></td>
-	                    		<td> </td>
+                          <td><%= cart.item.price * cart.number %></td>
+                          <% total += cart.item.price * cart.number %>
 	                    	</tr>
-	                    	<% total += cart.item.price * cart.number %>
                     	<% end %>
                     </tbody>
                 </table>
             </div>
             <br><br>
             <div class= "col-md-3">
-                <table class="table table-bordered">
+                <table class="table table-bordered mt-5">
 
                 	<tbody>
                         <br>
@@ -48,16 +49,16 @@
                 </table>
             </div>
 
-            <div class= "col-md-9">
-            <table class="table">
+            <div class= "col-md-9 mt-4">
+            <table class="table table-borderless">
 
                     <tbody>
                         <tr>
-                            <th class="h5">支払方法</th>
+                            <th class="h5 font-weight-bold">支払方法</th>
                             <td><%= session[:order]['payment'] %></td>
                         </tr>
                         <tr>
-                            <th class="h5">お届け先</th>
+                            <th class="h5 font-weight-bold">お届け先</th>
                             <td><%= session[:order]['order_postal_code'] %>
                                 <%= session[:order]['address'] %>
                                 <%= session[:order]['name'] %>
@@ -66,7 +67,7 @@
                     </tbody>
             </table>
 
-            <%= link_to '購入を確定する',orders_path(total_price: total+800, customer_id:current_customer.id), class: 'btn btn-info px-3 pull-right', method: :post%>
+            <%= link_to '購入を確定する',orders_path(total_price: total+800, customer_id:current_customer.id), class: 'btn btn-info px-3 pull-right mt-4 mb-5', method: :post%>
             </div>
 
 		</div>

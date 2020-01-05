@@ -1,11 +1,29 @@
-<div class="container pt-3"><h1>商品一覧</h1></div>
 
-<% @items.each do |item| %>
-    <div class="container">
-      <%= link_to attachment_image_tag(item, :image, :fill, 120, 120, format: 'jpg', fallback: "no_image.jpg"), item_path(item) %>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-3">
+      <div class="genre">
+        <h3>ジャンル検索</h3>
+        <% @genre.each do |genre| %>
+          <p class="genre_name"><%= link_to genre.name, "search/genre?genre=#{genre.id}", class:"genre_name"%><p>
+        <% end %>
+      </div>
     </div>
-    <%= item.name %>
-    <%= item.description %>
-    <%= item.price %>
-<% end %>
+    <div class="col-9">
+      <% if @genre_name %>
+      <h1 class="d-inline-block"><%= @genre_name.name %></h1>
+      <p class="d-inline-block"><%="（全#{@genre_name.items.count}件）" %></p>
+      <% end %>
+      <div class="item-box d-flex justify-content-between">
+        <% @items.each do |item| %>
+          <div class="col-3">
+            <%= link_to attachment_image_tag(item, :image, :fill, 30, 30, format: 'jpg', fallback: "no_image.jpg", size:"150x100"), item_path(item) %>
+            <p><%= item.name %></p>
+            <p>￥<%= item.price %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
