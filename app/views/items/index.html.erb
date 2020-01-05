@@ -5,7 +5,7 @@
       <div class="genre">
         <h3>ジャンル検索</h3>
         <% @genre.each do |genre| %>
-          <p class="genre_name"><%= link_to genre.name, "search/genre?genre=#{genre.id}", class:"genre_name"%><p>
+          <p class="genre_name"><%= link_to genre.name, "/search/genre?genre=#{genre.id}", class:"genre_name"%><p>
         <% end %>
       </div>
     </div>

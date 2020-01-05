@@ -1,9 +1,6 @@
 class ItemsController < ApplicationController
-
-  before_action :authenticate_customer!
-
+  before_action :authenticate_customer!, except: [:show, :index]
   before_action :set_item, only: [:show, :cancel]
-
   def index
     @items = Item.all
     @genre = Genre.where(deleted_at: nil)
@@ -17,15 +14,16 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])
     @cart = CartItem.new
     @number = [*1..100]
     @genre = Genre.where(deleted_at: nil)
-  end
 
+    @current_customer_cart_item = CartItem.where(item_id: @item.id)
+  end
 
   def cancel
   end
-
 
   private
     def set_item

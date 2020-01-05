@@ -6,7 +6,7 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.new
     @genres = Genre.with_deleted
   end
-  
+
   def edit
   end
 
