@@ -1,25 +1,35 @@
-<%= "ジャンル一覧" %>
-<%= "ジャンル新規作成" %>
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class= "col-md-6 mt-4 mb-5">
+        <h2>ジャンル一覧</h2>
+        <p id="notice"><%= notice %></p>
 
-<%= form_for(@genre, url: create_admin_genre_path) do |genre_create_form| %>
-  <%= genre_create_form.text_field :name %>
-  <%= genre_create_form.submit '登録', class: 'btn btn-primary btn-lg my-1 mb-5 px-5' %> 
-<% end %>
+        <%= form_for(@genre, url: create_admin_genre_path) do |genre_create_form| %>
+          <%= genre_create_form.text_field :name %>
+          <%= genre_create_form.submit '登録', class: 'btn btn-info col-md-3 ml-2 ' %>
+        <% end %>
 
-<% @genres.each do |genre| %>
-  <%= genre.name %>
-
-  <% if genre.paranoia_destroyed? %>
-    <td align=“center”>無効</td>
-  <% else %>
-    <td align=“center”>有効</td>
-  <% end %>
-
-  <% if genre.paranoia_destroyed? %>
-    <%= link_to '有効にする', regeneration_admin_genre_path(genre), method: :patch, class: 'btn btn-primary btn-lg my-1 mb-5 px-5' %>
-  <% else %>
-    <%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn btn-primary btn-lg my-1 mb-5 px-5' %>
-  <% end %>
-
-<% end %>
+          <table class="table table-bordered mt-5">
+            <% @genres.each do |genre| %>
+              <tbody>
+                <tr>
+                  <td style="width: 200px"><%= genre.name %></td>
+                  <td><% if genre.paranoia_destroyed? %>
+                        <div align=“center”>無効</div>
+                      <% else %>
+                        <div align=“center”>有効</div>
+                      <% end %>
+                  </td>
+                  <td><% if genre.paranoia_destroyed? %>
+                        <%= link_to '有効にする', regeneration_admin_genre_path(genre), method: :patch, class: 'btn btn-info col-md-9' %>
+                      <% else %>
+                      <%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn btn-info col-md-9' %>
+                      <% end %>
+                  </td>
+                </tr>
+              </tbody>
+            <% end %>
+          </table>
+    </div>
+  </div>
+</div>

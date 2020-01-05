@@ -1,10 +1,23 @@
-<h3><%= "ジャンル編集" %></h3><br />
-<p id="notice"><%= notice %></p>
-
-<%= form_for(@genre, url: admin_genre_path) do |edit_genre_form| %>
-  <%= edit_genre_form.text_field :name %>
-  <%= edit_genre_form.submit('完了',class: 'btn btn-primary btn-lg my-1 mb-5 px-5') %>
-  <%= edit_genre_form.submit('有効', class: 'btn btn-primary btn-lg my-1 mb-5 px-5') %>
-<% end %>
-
-<%= link_to '無効', admin_genre_path(@genre), method: :delete, class: 'btn btn-primary btn-lg my-1 mb-5 px-5', data: { confirm: '本当によろしいですか?' } %>
+<div class="container">
+  <div class="row">
+    <div class= "col-md-9 mt-5 mb-5">
+    	<h2><%= "ジャンル編集" %></h2>
+		<p id="notice"><%= notice %></p>
+		<table class="table table-borderless mt-3">
+			<tbody>
+                <tr>
+                  	<td style="width: 70%"><%= form_for(@genre, url: admin_genre_path) do |edit_genre_form| %>
+						  <%= edit_genre_form.text_field :name, class: "col-md-5" %>
+						  <%= edit_genre_form.submit('完了',class: 'btn btn-info col-md-3 ml-2') %>
+						  <%= edit_genre_form.submit('有効', class: 'btn btn-info col-md-3 ml-4') %>
+						<% end %>
+					</td>
+					<td style="width: 30%">
+						<%= link_to '無効', admin_genre_path(@genre), method: :delete, class: 'btn btn-danger col-md-8 mr-3', data: { confirm: '本当によろしいですか?' } %>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</div>
