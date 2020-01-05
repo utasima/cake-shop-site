@@ -4,14 +4,14 @@
 			<div class="genre">
         <h3>ジャンル検索</h3>
         <% @genre.each do |genre| %>
-          <p><%= genre.name %></p>
+          <p class="genre_name"><%= link_to genre.name, "/search/genre?genre=#{genre.id}", class:"genre_name"%><p>
         <% end %>
       </div>
     </div>
 		<div class ="col-md-9">
 			<div class="d-flex">
 				<div><%= attachment_image_tag(@item, :image, :fill, 250, 300, format: 'jpg', fallback: "no_image.jpg",size:"300x200") %></div>
-				<div class="pl-3">	
+				<div>
 					<h3><%= @item.name %></h3>
 					<p><%= @item.description %></p>
 					<h4>￥<%= @item.price %>（税込み）</h4>

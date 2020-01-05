@@ -37,6 +37,5 @@ $(function () {
       $slides.eq(nextIndex).fadeIn();
       currentIndex = nextIndex;
     }
-
   });
 }); 

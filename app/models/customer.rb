@@ -12,6 +12,6 @@ class Customer < ApplicationRecord
   accepts_nested_attributes_for :deliver_infos
   acts_as_paranoid
   has_many :order_items
-  
+
 end
 
