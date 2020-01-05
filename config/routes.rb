@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
   get 'orders/confirmation' => "orders#confirmation"
   get 'orders/thanks' => "orders#thanks"
-  
+
+  get "admin/top" => "admin/orders#top"
+
 	delete 'cart_items/all_destroy' => "cart_items#all_destroy"
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
@@ -44,7 +46,7 @@ Rails.application.routes.draw do
   scope module: :customers do
     resources :admin, only: [:index,:show,:edit,:update,:destroy]
   end
-  
+
   put "admin/:id/active/" => "customers/admin#active", as: "admin_active"
 
   resources :items, only: [:index, :show]
