@@ -20,7 +20,8 @@ Rails.application.routes.draw do
     passwords:     'customers/passwords',
     registrations: 'customers/registrations'
   }
-
+  get "admin/search/genre", to: "admin/items#genre_search"
+  
   namespace :admin do
     resources :items
     resources :customers
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :order_items
   end
+
 
   post 'admin/genres', to: 'admin/genres#create', as: 'create_admin_genre'
   patch 'admin/genres/:id/regeneration', to: 'admin/genres#regeneration', as: 'regeneration_admin_genre'
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
   put "admin/:id/active/" => "customers/admin#active", as: "admin_active"
 
   resources :items, only: [:index, :show]
+  get "search/genre", to: "items#genre_search"
   get "cancel" => "items/cancel"
 
   resources :cart_items, only: [:index,:destroy,:create,:update]

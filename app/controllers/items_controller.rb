@@ -9,6 +9,13 @@ class ItemsController < ApplicationController
     @genre = Genre.where(deleted_at: nil)
   end
 
+  def genre_search
+    @items = Item.where(genre_id: params[:genre])
+    @genre = Genre.where(deleted_at: nil)
+    @genre_name = Genre.find(params[:genre])
+    render :index
+  end
+
   def show
     @cart = CartItem.new
     @number = [*1..100]
