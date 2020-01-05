@@ -1,6 +1,12 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
 
+  def top
+    today = Date.today
+    @counts = Order.where(created_at: Date.today.all_day).count
+    # @counts = Order.where(created_at: Date.today.beginning_of_day..Date.today.end_of_day).count
+  end
+
   def index
     @orders = Order.all
   end
@@ -15,7 +21,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def confirmation
-  end 
+  end
 
   def thanks
   end
