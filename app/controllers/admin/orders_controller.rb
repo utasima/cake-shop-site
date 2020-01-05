@@ -1,7 +1,7 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
   def index
-    @orders = Order.with_deleted
+    @orders = Order.all
   end
 
   def show
