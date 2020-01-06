@@ -20,7 +20,6 @@ class Admin::OrdersController < ApplicationController
   def thanks
   end
 
-
   def create
   end
 

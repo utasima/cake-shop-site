@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   post 'admin/genres', to: 'admin/genres#create', as: 'create_admin_genre'
   patch 'admin/genres/:id/regeneration', to: 'admin/genres#regeneration', as: 'regeneration_admin_genre'
 
-  patch 'admin/items/:id/regeneration', to: 'admin/items#regeneration', as: 'regeneration_item_genre'
+  patch 'admin/items/:id/regeneration', to: 'admin/items#regeneration', as: 'regeneration_admin_item'
 
   resources :deliver_infos
   post 'deliver_infos', to: 'deliver_infos#create', as: 'create_deliver_info'

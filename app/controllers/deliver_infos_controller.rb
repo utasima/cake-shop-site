@@ -1,9 +1,6 @@
 class DeliverInfosController < ApplicationController
-
   before_action :authenticate_customer!
-
   before_action :set_deliver_info, only: [:edit, :destroy, :update]
-
   def index
     @deliver_info = DeliverInfo.new
     @deliver_infos = DeliverInfo.where(customer_id: current_customer.id)
