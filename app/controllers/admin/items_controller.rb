@@ -45,6 +45,7 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_items_path
   end
 
+
   private
   # def if_not_admin
   #   redirect_to root_path unless current_user.admin?

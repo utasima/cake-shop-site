@@ -6,7 +6,7 @@ class DeliverInfosController < ApplicationController
 
   def index
     @deliver_info = DeliverInfo.new
-    @deliver_infos = DeliverInfo.all
+    @deliver_infos = DeliverInfo.where(customer_id: current_customer.id)
   end
 
   def edit
