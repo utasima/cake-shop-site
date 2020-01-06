@@ -18,6 +18,7 @@
 @import "font-awesome";
 @import "bootstrap";
 @import "cart_items";
+@import "items";
 
 /*共通レイアウト*/
 .container{
@@ -41,12 +42,11 @@
 .no-js .slideshow img:first-child {
   display: inline;
 }
-
-
-/* 共通レイアウト */
-.container{
-	margin-top: 20px;
+footer{
+  margin-top: 20px;
+  border-top: 1px solid #000000;
 }
+
 /* 退会ページ */
 .button-unsubscribe {
   margin: 0 auto;
@@ -82,4 +82,3 @@ font-size:30px;
   background-size: cover;
   color: #FFFFFF;
 }
-

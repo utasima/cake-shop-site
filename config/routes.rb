@@ -2,11 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'about' => "home#about"
 
-  get 'customer/edit_password' => "customers#edit_password"
-  post'customer/update_password' => "customers#update_password"
-  get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
-  get 'orders/confirmation' => "orders#confirmation"
-  get 'orders/thanks' => "orders#thanks"
+
 
   get "admin/top" => "admin/orders#top"
 
@@ -51,5 +47,11 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:index,:destroy,:create,:update]
 
   resources :orders
+
+    get 'customer/edit_password' => "customers#edit_password"
+  post'customer/update_password' => "customers#update_password"
+  get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
+  get 'orders/confirmation' => "orders#confirmation"
+  get 'orders/thanks' => "orders#thanks"
 end
 

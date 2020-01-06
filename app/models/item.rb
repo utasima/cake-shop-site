@@ -6,6 +6,6 @@ class Item < ApplicationRecord
 
   has_many :order_items
   has_many :cart_items
-
-  belongs_to :genre, optional: true
+  belongs_to :genre
+  enum sales_status: { 販売中: 0,  売り切れ: 1 }
 end

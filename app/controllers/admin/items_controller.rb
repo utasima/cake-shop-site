@@ -1,11 +1,17 @@
 class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_item, only: [:show, :edit, :update, :destroy,]
-
-
   def index
     @item = Item.new
     @items = Item.all
+    @genre = Genre.where(deleted_at: nil)
+  end
+
+  def genre_search
+    @items = Item.where(genre_id: params[:genre])
+    @genre = Genre.where(deleted_at: nil)
+    @genre_name = Genre.find(params[:genre])
+    render :index
   end
 
   def edit
@@ -17,12 +23,10 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @genres = Genre.all
   end
 
   def create
     @item = Item.new(item_params)
-    @item.deleted_at = true
     if @item.save
       redirect_to admin_item_path(@item)
     else
@@ -46,16 +50,18 @@ class Admin::ItemsController < ApplicationController
   end
 
 
-  private
-  # def if_not_admin
-  #   redirect_to root_path unless current_user.admin?
-  # end
+  def regeneration
+    @item = Item.with_deleted.find(params[:id])
+    @item.restore
+    redirect_to admin_items_path
+  end
 
+  private
   def set_item
     @item = Item.find(params[:id])
   end
 
   def item_params
-    params.require(:item).permit(:name, :price, :description,:deleted_at, :image)
+    params.require(:item).permit(:name, :price, :description, :sales_status, :image, :genre_id)
   end
 end

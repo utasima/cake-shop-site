@@ -20,7 +20,6 @@
 
 //= require jquery
 //= require jquery_ujs
-
 $(function () {
 
   $('.slideshow').each(function () {
@@ -38,7 +37,5 @@ $(function () {
       $slides.eq(nextIndex).fadeIn();
       currentIndex = nextIndex;
     }
-
   });
-
-});
+}); 
