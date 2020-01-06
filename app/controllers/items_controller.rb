@@ -11,6 +11,7 @@ class ItemsController < ApplicationController
     @items = Item.where(genre_id: params[:genre])
     @genre = Genre.where(deleted_at: nil)
     @genre_name = Genre.find(params[:genre])
+    @search = Item.search(params[:search])
     render :index
   end
 
