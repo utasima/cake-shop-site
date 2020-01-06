@@ -10,10 +10,9 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: black;">
-
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: lightpink;">
           <% if customer_signed_in? %>
-            <%= link_to "LOGO", root_path, data: {"turbolinks" => false},class: "navbar-logo" %>
+            <%= link_to "Sweety", root_path, data: {"turbolinks" => false},class: "navbar-logo" %>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,7 +26,7 @@
               </ul>
             </div>
           <% elsif admin_signed_in? %>
-            <%= link_to "LOGO", admin_top_path, data: {"turbolinks" => false},class: "navbar-logo" %>
+            <%= link_to "Sweety", admin_top_path, data: {"turbolinks" => false},class: "navbar-logo" %>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,7 +41,7 @@
               </ul>
             </div>
           <% else %>
-            <%= link_to "LOGO", root_path, data: {"turbolinks" => false},class: "navbar-logo" %>
+            <%= link_to "Sweety", root_path, data: {"turbolinks" => false},class: "navbar-logo" %>
               <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
               <span class="navbar-toggler-icon"></span>
               </button>
