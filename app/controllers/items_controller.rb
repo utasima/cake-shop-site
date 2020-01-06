@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
     @genre = Genre.where(deleted_at: nil)
+    @search = Item.search(params[:search])
   end
 
   def genre_search

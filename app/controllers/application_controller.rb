@@ -12,19 +12,8 @@ class ApplicationController < ActionController::Base
 	def after_sign_in_path_for(resource_or_scope)
 		if resource_or_scope.is_a?(Admin)
 			 admin_top_path
-		else
-			root_path
-			flash[:notice] = "Signed out successfully"
 		end
-	end
-
-	def after_log_in_path_for(resource_or_scope)
-		if resource_or_scope.is_a?(Admin)
-			admin_items_path
-		else
 			root_path
-			flash[:notice] = "Signed out successfully"
-		end
 	end
 
 	def after_sign_out_path_for(resource_or_scope)
