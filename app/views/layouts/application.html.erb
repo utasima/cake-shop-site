@@ -18,6 +18,10 @@
             </button>
             <div class="collapse navbar-collapse" id="Navber">
               <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <li class="nav_item h3 search"><%= form_tag(items_path, method: :get) do %>
+                <%= text_field_tag :search,"",{size:"30",class:"mt-2"}%>
+                  <%= submit_tag "Search" ,:name => nil %>
+                  <% end %></li>
               <li class="nav_item h3"><%= link_to "About", about_path, class:"nav-item nav-link" %></li>
               <li class="nav_item"><%= link_to fa_icon("user 2x"), customer_path(current_customer), class:"nav-item nav-link glyphicon glyphicon-user",alt:"ユーザーアイコン"  %></li>
               <li class="nav_item"><%= link_to fa_icon("shopping-cart 2x"), cart_items_path, class:"nav-item nav-link", alt:"ショッピングカート" %></li>
@@ -47,6 +51,10 @@
               </button>
               <div class="collapse navbar-collapse" id="Navber">
                 <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                  <li class="nav_item h3 search"><%= form_tag(items_path, method: :get) do %>
+                <%= text_field_tag :search,"",{size:"30",class:"mt-2"}%>
+                  <%= submit_tag "Search" ,:name => nil %>
+                  <% end %></li>
                 <li class="nav_item h3"><%= link_to "About", about_path, class:"nav-item nav-link" %></li>
 
                 <li class="nav_item h3">

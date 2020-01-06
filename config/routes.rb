@@ -43,12 +43,13 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"
+  get "search/genre", to: "items#genre_search"
 
   resources :cart_items, only: [:index,:destroy,:create,:update]
 
   resources :orders
 
-    get 'customer/edit_password' => "customers#edit_password"
+  get 'customer/edit_password' => "customers#edit_password"
   post'customer/update_password' => "customers#update_password"
   get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
   get 'orders/confirmation' => "orders#confirmation"
