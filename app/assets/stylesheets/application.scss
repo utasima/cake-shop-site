@@ -86,7 +86,12 @@ footer{
 
 .navbar-logo{
 color: #FFFFFF;
-font-size:30px;
+font-size: 40px;
+font-weight: bold;
+  &:hover{
+    color: #ffffff;
+    text-decoration: none;
+  }
 }
 .nav_item {
   margin-right: 30px;

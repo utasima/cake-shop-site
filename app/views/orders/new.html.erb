@@ -42,8 +42,8 @@
             <label for="name">宛名</label>
           </div>
           <div class="col-10">
-            <span><%= text_field_tag :new_postal_code %>ハイフンなし</span>
-            <%= text_field_tag :new_address,"", {size:"80"}%>
+            <%= text_field_tag :new_postal_code %><p class="d-inline-block mb-0">ハイフンなし</p>
+            <div><%= text_field_tag :new_address,"", {size:"80"}%></div>
             <%= text_field_tag :new_name,"", {size:"40"}  %>
           </div>
         </div>
