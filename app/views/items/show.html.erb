@@ -1,29 +1,31 @@
 <div class="container">
 	<div class = "row">
-		<div class = "col-md-12">
-			<h2 class = "mt-4 mb-3">商品詳細</h2>
-				<div class ="card mb-5" style="width: 450px">
-					<div class = "card-img-top pl-5 pt-4">
-						<%= link_to attachment_image_tag(@item, :image, :fill, 350, 300, format: 'jpg', fallback: "no_image.jpg") %>
-					</div>
-					<div class= "card-body pl-5">
-						<div class = "card-title h4">
-							<%= @item.name %></div>
-						<div class = "card-text h5">
-							<%= @item.description %></div>
-						<div class = "card-text h5">
-							<%= @item.price %></div>
-							<%= form_for @cart, url: cart_items_path do |f| %>
-								<%= f.select :number, (1..99)%>
-								<%= f.hidden_field :item_id, :value => @item.id %>
-								<%= f.submit "カートに入れる", class:"btn btn-info btn-lg col-md-11 mt-3 mb-3 " %>
-								<% if customer_signed_in? %>
-									<%= f.hidden_field :customer_id, :value => current_customer.id%>
-								<% end %>
-						<% end %>
-					</div>
+		<div class="col-3">
+			<div class="genre">
+        <h3>ジャンル検索</h3>
+        <% @genre.each do |genre| %>
+          <p class="genre_name"><%= link_to genre.name, "/search/genre?genre=#{genre.id}", class:"genre_name"%><p>
+        <% end %>
+      </div>
+    </div>
+		<div class ="col-md-9">
+			<div class="d-flex">
+				<div><%= attachment_image_tag(@item, :image, :fill, 250, 300, format: 'jpg', fallback: "no_image.jpg",size:"300x200") %></div>
+				<div>
+					<h3><%= @item.name %></h3>
+					<p><%= @item.description %></p>
+					<h4>￥<%= @item.price %>（税込み）</h4>
+												<h3 class="text-danger"><%= @item.sales_status if @item.sales_status == "売り切れ" %></h3>
 				</div>
+			</div>
+			<div class="offset-8">
+				<%= form_for @cart, url: cart_items_path do |f| %>
+				<%= f.select :number, (1..99), size:"4"%>
+				<%= f.hidden_field :item_id, :value => @item.id %>
+				<%= f.submit "カートに入れる", class:"btn btn-info btn-lg col-md-11 mt-3 mb-3 " %>
+				<%= f.hidden_field :customer_id, :value => current_customer.id %>
+			<% end %>
+			</div>
 		</div>
 	</div>
 </div>
-

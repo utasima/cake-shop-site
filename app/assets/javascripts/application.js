@@ -20,7 +20,6 @@
 
 //= require jquery
 //= require jquery_ujs
-
 $(function () {
 
   $('.slideshow').each(function () {
@@ -39,4 +38,4 @@ $(function () {
       currentIndex = nextIndex;
     }
   });
-});
+}); 

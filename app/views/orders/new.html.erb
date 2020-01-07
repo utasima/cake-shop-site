@@ -1,51 +1,55 @@
 <div class="container">
   <div class="row">
-    <div class="offset-2">
-      <div class="d-flex flex-column">
-  <h1>購入情報入力</h1>
   <%= form_tag(orders_path) do %>
+  <div class="d-flex flex-column">
+  <h1>購入情報入力</h1>
     <h4>支払方法</h4>
-      <div>
+      <div style="margin-left:30px">
         <%= radio_button_tag :payment, :クレジットカード, checked: true %>
         <label>クレジットカード</label>
       </div>
-      <div>
+      <div style="margin-left:30px">
         <%= radio_button_tag :payment, :銀行振込 %>
         <label>銀行振込</label>
       </div>
       <h4>お届け先</h4>
-      <div>
-        <%= radio_button_tag :address, :ご自身の住所, checked: true%>
-        <label for="address">ご自身の住所</label>
-      </div>
-      <%= hidden_field_tag :customers_name, @user.last_name + @user.first_name %>
-      <%= hidden_field_tag :customers_postal_code, @user.customers_postal_code %>
-      <%= hidden_field_tag :customers_address, @user.customers_address %>
-        <%= "〒#{@user.customers_postal_code}"+"#{@user.customers_address}"+"#{@user.last_name}"+"#{@user.first_name}" %>
-      <div>
-        <%= radio_button_tag :address, :登録先住所%>
-        <label for="address">登録先住所から選択</label>
-      </div>
-        <%= select_tag(:registered_address, options_for_select(@deliver.collect { |p| ["〒" + p.postal_code + p.address + p.name, p.id]}))%>
-      <div>
-        <%= radio_button_tag :address, :新しいお届け先 %>
-        <label for="address">新しいお届け先</label>
-      </div>
-      <div>
-        <label for="order_postal_code">郵便番号</label>
-        <%= text_field_tag :new_postal_code %><span>ハイフンなし</span>
-      </div>
-      <div>
-        <label for="address">住所</label>
-        <%= text_field_tag :new_address %>
-      </div>
-      <div>
-        <label for="name">宛名</label>
-        <%= text_field_tag :new_name %>
-      </div>
-          <%= submit_tag "確認へ進む", class:"btn btn-primary" %>
+      <div style="margin-left:30px">
+        <div>
+          <%= radio_button_tag :address, :ご自身の住所, checked: true%>
+          <label for="address">ご自身の住所</label>
+        </div>
+        <%= hidden_field_tag :customers_name, @user.last_name + @user.first_name %>
+        <%= hidden_field_tag :customers_postal_code, @user.customers_postal_code %>
+        <%= hidden_field_tag :customers_address, @user.customers_address %>
+        <div style="margin-left:15px">
+          <%= "〒#{@user.customers_postal_code}"+"#{@user.customers_address}"+"#{@user.last_name}"+"#{@user.first_name}"%>
+        </div>
+        <div>
+          <%= radio_button_tag :address, :登録先住所%>
+          <label for="address">登録先住所から選択</label>
+        </div>
+          <div style="margin-left:15px">
+          <%= select_tag(:registered_address, options_for_select(@deliver.collect { |p| ["〒" + p.postal_code + p.address + p.name, p.id]}))%>
           </div>
-        <% end %>
+        <div>
+          <%= radio_button_tag :address, :新しいお届け先 %>
+          <label for="address">新しいお届け先</label>
+        </div>
+        <div class="row">
+          <div class="d-flex flex-column col-1.5", style="margin-left:30px">
+            <label for="order_postal_code">郵便番号</label>
+            <label for="address">住所</label>
+            <label for="name">宛名</label>
+          </div>
+          <div class="col-10">
+            <span><%= text_field_tag :new_postal_code %>ハイフンなし</span>
+            <%= text_field_tag :new_address,"", {size:"80"}%>
+            <%= text_field_tag :new_name,"", {size:"40"}  %>
+          </div>
+        </div>
       </div>
     </div>
+    <%= submit_tag "確認へ進む", class:"btn btn-primary" %>
+  <% end %>
   </div>
+</div>

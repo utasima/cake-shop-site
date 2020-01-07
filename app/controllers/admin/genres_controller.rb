@@ -19,9 +19,9 @@ class Admin::GenresController < ApplicationController
       render action: :index
     end
   end
-  
+
   def update
-    if 
+    if
       @genre.update(genre_params)
       redirect_to admin_genres_path(@genres), notice: '更新しました。'
     else

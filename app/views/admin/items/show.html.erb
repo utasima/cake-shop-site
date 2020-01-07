@@ -4,16 +4,16 @@
 			<h2 class = "mt-4 mb-3">商品詳細</h2>
 				<div class ="card mb-5" style="width: 450px">
 					<div class = "card-img-top pl-5 pt-4">
-						<%= attachment_image_tag @item, :image, :fill, 350, 300, format: 'jpg', fallback: "no_image.jpg" %>
+						<%= attachment_image_tag(@item, :image, :fill, 30, 30, format: 'jpg', fallback: "no_image.jpg", size:"150x100") %>
 					</div>
 					<div class= "card-body pl-5">
 						<div class = "card-title h4">
-							<%= @item.name %></div>
+							<h2><%= @item.name %></h2></div>
 						<div class = "card-text h5">
-							<%= @item.description %></div>
+							<h4><%= @item.description %></h4></div>
 						<div class = "card-text h5">
-							<%= @item.price %></div>
-
+							<h3>￥<%= @item.price %></h3></div>
+							<h3 class="text-danger"><%= @item.sales_status if @item.sales_status == "売り切れ" %></h3>
 						<%= link_to edit_admin_item_path(@item) do %>
 						<div class="btn btn-info btn-lg col-md-11 mt-3 mb-3 ">編集する</div>
 						<% end %>

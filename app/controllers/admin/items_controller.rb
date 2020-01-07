@@ -3,7 +3,15 @@ class Admin::ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy,]
   def index
     @item = Item.new
-    @items = Item.with_deleted
+    @items = Item.all
+    @genre = Genre.where(deleted_at: nil)
+  end
+
+  def genre_search
+    @items = Item.where(genre_id: params[:genre])
+    @genre = Genre.where(deleted_at: nil)
+    @genre_name = Genre.find(params[:genre])
+    render :index
   end
 
   def edit
@@ -53,6 +61,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :price, :description, :deleted_at, :image, :genre_id)
+    params.require(:item).permit(:name, :price, :description, :sales_status, :image, :genre_id)
   end
 end
