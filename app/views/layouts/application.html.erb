@@ -12,6 +12,7 @@
   <body>
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: lightpink;">
           <% if customer_signed_in? %>
+<<<<<<< HEAD
             <%= link_to "Sweety", root_path, data: {"turbolinks" => false},class: "navbar-logo" %>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
             <span class="navbar-toggler-icon"></span>
@@ -25,6 +26,20 @@
               " %></li>
               </ul>
             </div>
+=======
+
+            <li class="nav_item h3 search"><%= form_tag(items_path, method: :get) do %>
+                <%= text_field_tag :search,"",{size:"30",class:"mt-2 h"}%>
+                  <%= button_tag type: 'submit',:name => nil, class:"btn btn-primary mb-1" do %>
+                  <%= fa_icon("search 2x") %>
+                  <% end %>
+                  <% end %></li>
+            <li class="nav_item h3"><%= link_to "About", about_path, class:"nav-item nav-link" %></li>
+            <li class="nav_item"><%= link_to fa_icon("user 2x"), customer_path(current_customer), class:"nav-item nav-link glyphicon glyphicon-user",alt:"ユーザーアイコン"  %></li>
+            <li class="nav_item"><%= link_to fa_icon("shopping-cart 2x"), cart_items_path, class:"nav-item nav-link", alt:"ショッピングカート" %></li>
+            <li class="nav_item"><%= link_to fa_icon("sign-out 2x"), destroy_customer_session_path, method: :delete, class:"nav-item nav-link", alt:"ログアウト
+            " %></li>
+>>>>>>> 5e044604af11c331ce8db12c3b7346507b78174f
           <% elsif admin_signed_in? %>
             <%= link_to "Sweety", admin_top_path, data: {"turbolinks" => false},class: "navbar-logo" %>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
