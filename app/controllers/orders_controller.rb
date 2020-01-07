@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
   before_action :authenticate_customer!
+
   def index
     @orders = Order.where(customer_id: current_customer)
+
   end
 
   def show
@@ -82,3 +84,22 @@ class OrdersController < ApplicationController
     params.require(:order_item).permit(:item_id,:order_id,:customer_id,:number,:price)
   end
 end
+
+
+
+
+
+# @orders = Order.とってくる
+
+# view
+# @orders.each do |order|
+#   配送先：order.address
+#   order.order_items.each do |order_item|
+#     byebug
+
+# サーバ再起動
+# order/indexをリロード
+# 処理がとまる
+# ターミナルに戻って
+# nで処理を進める
+# 指定の場所lに止まったら　order_item とターミナルに入力s

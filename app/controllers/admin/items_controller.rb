@@ -49,6 +49,7 @@ class Admin::ItemsController < ApplicationController
     redirect_to admin_items_path
   end
 
+
   def regeneration
     @item = Item.with_deleted.find(params[:id])
     @item.restore
