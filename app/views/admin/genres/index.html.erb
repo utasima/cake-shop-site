@@ -2,7 +2,6 @@
   <div class="row">
     <div class= "col-md-6 mt-4 mb-5">
         <h2>ジャンル一覧</h2>
-        <p id="notice"><%= notice %></p>
 
         <%= form_for(@genre, url: create_admin_genre_path) do |genre_create_form| %>
           <%= genre_create_form.text_field :name %>
