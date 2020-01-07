@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :order_items
   end
-
+  get "admin/search/genre", to: "admin/items#genre_search"
   post 'admin/genres', to: 'admin/genres#create', as: 'create_admin_genre'
   patch 'admin/genres/:id/regeneration', to: 'admin/genres#regeneration', as: 'regeneration_admin_genre'
 

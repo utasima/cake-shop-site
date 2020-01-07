@@ -11,72 +11,54 @@
 
   <body>
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: lightpink;">
+      <% if admin_signed_in? %>
+        <%= link_to "Sweety", admin_top_path, data: {"turbolinks" => false},class: "navbar-logo" %>
+      <% else %>
+        <%= link_to "Sweety", root_path, data: {"turbolinks" => false},class: "navbar-logo" %>
+      <% end %>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="Navber">
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
           <% if customer_signed_in? %>
-<<<<<<< HEAD
-            <%= link_to "Sweety", root_path, data: {"turbolinks" => false},class: "navbar-logo" %>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="Navber">
-              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                <li class="nav_item h3 search"><%= form_tag(items_path, method: :get) do %>
-                <%= text_field_tag :search,"",{size:"30",class:"mt-2"}%>
-                  <%= submit_tag "Search" ,:name => nil %>
-=======
-
             <li class="nav_item h3 search"><%= form_tag(items_path, method: :get) do %>
                 <%= text_field_tag :search,"",{size:"30",class:"mt-2 h"}%>
                   <%= button_tag type: 'submit',:name => nil, class:"btn btn-primary mb-1" do %>
                   <%= fa_icon("search 2x") %>
                   <% end %>
->>>>>>> 5e044604af11c331ce8db12c3b7346507b78174f
-                  <% end %></li>
-              <li class="nav_item h3"><%= link_to "About", about_path, class:"nav-item nav-link" %></li>
-              <li class="nav_item"><%= link_to fa_icon("user 2x"), customer_path(current_customer), class:"nav-item nav-link glyphicon glyphicon-user",alt:"ユーザーアイコン"  %></li>
-              <li class="nav_item"><%= link_to fa_icon("shopping-cart 2x"), cart_items_path, class:"nav-item nav-link", alt:"ショッピングカート" %></li>
-              <li class="nav_item"><%= link_to fa_icon("sign-out 2x"), destroy_customer_session_path, method: :delete, class:"nav-item nav-link", alt:"ログアウト
-              " %></li>
-              </ul>
-            </div>
+            <% end %></li>
+            <li class="nav_item h3"><%= link_to "About", about_path, class:"nav-item nav-link" %></li>
+            <li class="nav_item"><%= link_to fa_icon("user 2x"), customer_path(current_customer), class:"nav-item nav-link glyphicon glyphicon-user",alt:"ユーザーアイコン"  %></li>
+            <li class="nav_item"><%= link_to fa_icon("shopping-cart 2x"), cart_items_path, class:"nav-item nav-link", alt:"ショッピングカート" %></li>
+            <li class="nav_item"><%= link_to fa_icon("sign-out 2x"), destroy_customer_session_path, method: :delete, class:"nav-item nav-link", alt:"ログアウト
+            " %></li>
           <% elsif admin_signed_in? %>
-            <%= link_to "Sweety", admin_top_path, data: {"turbolinks" => false},class: "navbar-logo" %>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="Navber">
-              <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-              <li class="nav_item h3"><%=link_to "Genre",admin_genres_path, class:"nav-item nav-link glyphicon glyphicon-user",alt:"会員一覧" %></li>
-              <li class="nav_item h3"><%=link_to fa_icon("users 1x"),admin_index_path, class:"nav-item nav-link" %></li>
-              <li class="nav_item h3"><%=link_to "Orders",admin_orders_path, class:"nav-item nav-link" %></li>
-              <li class="nav_item h3"><%=link_to "Items",admin_items_path, class:"nav-item nav-link" %></li>
-               <li class="nav_item"><%= link_to fa_icon("sign-out 2x"),  destroy_admin_session_path, method: :delete, class:"nav-item nav-link", alt:"ログアウト
-              " %></li>
-              </ul>
-            </div>
+            <li class="nav_item h3"><%=link_to "Genre",admin_genres_path, class:"nav-item nav-link glyphicon glyphicon-user",alt:"会員一覧" %></li>
+            <li class="nav_item h3"><%=link_to fa_icon("users 1x"),admin_index_path, class:"nav-item nav-link" %></li>
+            <li class="nav_item h3"><%=link_to "Orders",admin_orders_path, class:"nav-item nav-link" %></li>
+            <li class="nav_item h3"><%=link_to "Items",admin_items_path, class:"nav-item nav-link" %></li>
+             <li class="nav_item"><%= link_to fa_icon("sign-out 2x"),  destroy_admin_session_path, method: :delete, class:"nav-item nav-link", alt:"ログアウト
+            " %></li>
           <% else %>
-            <%= link_to "Sweety", root_path, data: {"turbolinks" => false},class: "navbar-logo" %>
-              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
-              <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="Navber">
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                  <li class="nav_item h3 search"><%= form_tag(items_path, method: :get) do %>
-                <%= text_field_tag :search,"",{size:"30",class:"mt-2"}%>
-                  <%= submit_tag "Search" ,:name => nil %>
-                  <% end %></li>
-                <li class="nav_item h3"><%= link_to "About", about_path, class:"nav-item nav-link" %></li>
-
-                <li class="nav_item h3">
-                <% if controller.controller_name == "admin" %>
-                  <%= link_to "Sign Up",new_admin_session_path, class:"nav-item nav-link" %>
-                <% else %>
-                  <%= link_to "Sign Up", new_customer_registration_path , class:"nav-item nav-link" %>
+            <li class="nav_item h3 search"><%= form_tag(items_path, method: :get) do %>
+              <%= text_field_tag :search,"",{size:"30",class:"mt-2 h"}%>
+                <%= button_tag type: 'submit',:name => nil, class:"btn btn-primary mb-1" do %>
+                <%= fa_icon("search 2x") %>
                 <% end %>
-              </li>
+            <% end %></li>
+              <li class="nav_item h3"><%= link_to "About", about_path, class:"nav-item nav-link" %></li>
+              <li class="nav_item h3">
+              <% if controller.controller_name == "admin" %>
+                <%= link_to "Sign Up",new_admin_session_path, class:"nav-item nav-link" %>
+              <% else %>
+                <%= link_to "Sign Up", new_customer_registration_path , class:"nav-item nav-link" %>
+              <% end %>
+            </li>
             <li class="nav_item h3"><%= link_to "Login", new_customer_session_path , class:"nav-item nav-link"; %></li>
-             </ul>
-             </div>
           <% end %>
+        </ul>
+      </div>
     </nav>
     <%= yield %>
     <footer>
