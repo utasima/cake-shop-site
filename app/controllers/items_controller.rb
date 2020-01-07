@@ -5,15 +5,16 @@ class ItemsController < ApplicationController
     @items = Item.all
     @genre = Genre.where(deleted_at: nil)
     @search = Item.search(params[:search])
+    
   end
 
   def genre_search
     @items = Item.where(genre_id: params[:genre])
     @genre = Genre.where(deleted_at: nil)
     @genre_name = Genre.find(params[:genre])
-    @search = Item.search(params[:search])
     render :index
   end
+
 
   def show
     @item = Item.find(params[:id])
