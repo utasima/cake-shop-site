@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5 mb-5">
 	<div class = "row">
 		<div class="col-3">
 			<div class="genre">
@@ -9,13 +9,13 @@
       </div>
     </div>
 		<div class ="col-md-9">
-			<div class="d-flex">
-				<div><%= attachment_image_tag(@item, :image, :fill, 250, 300, format: 'jpg', fallback: "no_image.jpg",size:"300x200") %></div>
-				<div>
+			<div class="d-flex ml-5">
+				<div><%= attachment_image_tag(@item, :image, :fill, 350, 300, format: 'jpg', fallback: "no_image.jpg",size:"300x200") %></div>
+				<div class="ml-3">
 					<h3><%= @item.name %></h3>
-					<p><%= @item.description %></p>
+					<h4><%= @item.description %></h4>
 					<h4>￥<%= @item.price %>（税込み）</h4>
-												<h3 class="text-danger"><%= @item.sales_status if @item.sales_status == "売り切れ" %></h3>
+					<h3 class="text-danger"><%= @item.sales_status if @item.sales_status == "売り切れ" %></h3>
 				</div>
 			</div>
 			<div class="offset-8">
