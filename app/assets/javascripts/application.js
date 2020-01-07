@@ -18,9 +18,6 @@
 //= require bootstrap-sprockets
 //= require jquery  
 //= require jquery_ujs
-// require_tree ../../../vendor/assets/javascripts/ .
-
-  //Skipprの初期化
 
 $(document).on('ready', function () {
   $(".full-screen-o").slick({
