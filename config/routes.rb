@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "admin/top" => "admin/orders#top"
 
-	delete 'cart_items/all_destroy' => "cart_items#all_destroy"
+  delete 'cart_items/all_destroy' => "cart_items#all_destroy"
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -52,7 +52,6 @@ Rails.application.routes.draw do
   get "search/genre", to: "items#genre_search"
 
   resources :cart_items, only: [:index,:destroy,:create,:update]
+
   resources :orders
-
 end
-
