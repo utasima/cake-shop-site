@@ -7,6 +7,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
   </head>
 
   <body>
@@ -25,7 +28,7 @@
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
           <% if customer_signed_in? %>
             <li class="nav_item h3 search"><%= form_tag(items_path, method: :get) do %>
-                <%= text_field_tag :search,"",{size:"30",class:"mt-2 h"}%>
+                <%= text_field_tag :search,"",{size:"30",class:"mt-2"}%>
                   <%= button_tag type: 'submit',:name => nil, class:"btn btn-primary mb-1" do %>
                   <%= fa_icon("search 2x") %>
                   <% end %>

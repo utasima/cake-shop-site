@@ -12,30 +12,19 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-
-//= require jquery
+//= require jquery  
 //= require jquery_ujs
-$(function () {
 
-  $('.slideshow').each(function () {
-
-    var $slides = $(this).find('img'),
-      slideCount = $slides.length,
-      currentIndex = 0;
-
-    $slides.eq(currentIndex).fadeIn();
-    setInterval(showNextSlide, 5000);
-
-    function showNextSlide() {
-      var nextIndex = (currentIndex + 1) % slideCount;
-      $slides.eq(currentIndex).fadeOut();
-      $slides.eq(nextIndex).fadeIn();
-      currentIndex = nextIndex;
-    }
+$(document).on('ready', function () {
+  $(".full-screen-o").slick({
+    dots: true, // ドットインジケーターの表示
+    autoplay: true, // 自動再生を設定
+    autoplaySpeed: 2000, // 自動再生のスピード（ミリ秒単位）
+    speed: 1000, // スライド/フェードアニメーションの速度を設定
+    infinite: true // スライドのループを有効にするか
   });
-}); 
+});
