@@ -14,13 +14,25 @@
       <p class="d-inline-block"><%="（全#{@genre_name.items.count}件）" %></p>
       <% end %>
       <div class="item-box d-flex">
-         <% @search.zip(@items).each do |search,item| %>
-          <div class="col-3">
-            <%= link_to attachment_image_tag(search, :image, :fill, 30, 30, format: 'jpg', fallback: "no_image.jpg", size:"150x100"), item_path(item) %>
-            <p><%= search.name %></p>
-            <p>￥<%= search.price %></p>
+        <!-- キーワード検索 -->
+        <% if @search %>
+          <% @search.each do |search| %>
+            <div class="col-3">
+              <%= link_to attachment_image_tag(search, :image, :fill, 30, 30, format: 'jpg', fallback: "no_image.jpg", size:"150x100"), item_path(search) %>
+              <p><%= search.name %></p>
+              <p>￥<%= search.price %></p>
             </div>
-            <% end %>
+          <% end %>
+        <% else %>
+          <% @items.each do |item| %>
+            <div class="col-3">
+              <%= link_to attachment_image_tag(item, :image, :fill, 30, 30, format: 'jpg', fallback: "no_image.jpg", size:"150x100"), item_path(item) %>
+              <p><%= item.name %></p>
+              <p>￥<%= item.price %></p>
+            </div>
+          <% end %>
+        <% end %>
+       </div>
       </div>
     </div>
   </div>
