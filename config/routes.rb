@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   get "admin/top" => "admin/orders#top"
 
-	delete 'cart_items/all_destroy' => "cart_items#all_destroy"
+  delete 'cart_items/all_destroy' => "cart_items#all_destroy"
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :order_items
   end
-
+  get "admin/search/genre", to: "admin/items#genre_search"
   post 'admin/genres', to: 'admin/genres#create', as: 'create_admin_genre'
   patch 'admin/genres/:id/regeneration', to: 'admin/genres#regeneration', as: 'regeneration_admin_genre'
 
@@ -43,15 +43,17 @@ Rails.application.routes.draw do
 
   resources :items, only: [:index, :show]
   get "cancel" => "items/cancel"
+  get "search/genre", to: "items#genre_search"
 
   resources :cart_items, only: [:index,:destroy,:create,:update]
 
-  resources :orders
-
-    get 'customer/edit_password' => "customers#edit_password"
-  post'customer/update_password' => "customers#update_password"
-  get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
   get 'orders/confirmation' => "orders#confirmation"
   get 'orders/thanks' => "orders#thanks"
-end
 
+  resources :orders
+
+  get 'customer/edit_password' => "customers#edit_password"
+  post'customer/update_password' => "customers#update_password"
+  get 'customer/new_Unsubscribe' => "customers#new_Unsubscribe"
+
+end
