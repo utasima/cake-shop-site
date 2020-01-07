@@ -1,10 +1,6 @@
 class Customers::AdminController < ApplicationController
 	before_action :authenticate_admin!
 
-	def home
-		@items = Item.all
-	end
-
 	def index
 		@customers = Customer.with_deleted.page(params[:page]).reverse_order
 	end
