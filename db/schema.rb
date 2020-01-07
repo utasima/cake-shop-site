@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_05_064650) do
+ActiveRecord::Schema.define(version: 2019_12_25_002648) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2020_01_05_064650) do
     t.string "customers_postal_code"
     t.string "customers_address"
     t.boolean "deleted_at"
-    t.string "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
@@ -64,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_01_05_064650) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.boolean "deleted_at"
+    t.boolean "deleted_at", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -74,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_01_05_064650) do
     t.string "name", null: false
     t.integer "price", null: false
     t.text "description"
-    t.boolean "deleted_at", null: false
+    t.integer "sales_status", limit: 1, default: 0, null: false
     t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -95,7 +94,7 @@ ActiveRecord::Schema.define(version: 2020_01_05_064650) do
   create_table "orders", force: :cascade do |t|
     t.integer "postage"
     t.integer "total_price"
-    t.integer "order_status"
+    t.integer "order_status", limit: 4, default: 0, null: false
     t.integer "payment"
     t.string "name"
     t.string "order_postal_code"
@@ -103,28 +102,7 @@ ActiveRecord::Schema.define(version: 2020_01_05_064650) do
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "deleted_at"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_name_kana"
-    t.string "first_name_kana"
-    t.string "phone_number"
-    t.string "customers_postal_code"
-    t.string "customers_address"
-    t.boolean "is_deleted"
-    t.string "profile_image_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["order_status"], name: "index_orders_on_order_status"
   end
 
 end
